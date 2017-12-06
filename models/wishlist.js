@@ -6,4 +6,4 @@ const wishlistSchema = mongoose.Schema({
   contributors: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
-module.exports = mongoose.model('wishlist', wishlistSchema);
+module.exports = mongoose.model('Wishlist', wishlistSchema);

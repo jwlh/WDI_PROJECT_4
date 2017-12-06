@@ -5,12 +5,24 @@ const userSchema = new mongoose.Schema({
   firstName: {type: String},
   lastName: {type: String},
   username: {type: String},
-  email: {type: String, unique: 'That email has already been taken'},
+  email: {type: String, unique: 'That email has already been taken', required: true},
   password: {type: String},
   facebookId: {type: String},
-  subscribedWishlists: [],
-  avatar: {type: String}
+  image: {type: String}
 });
+
+userSchema.virtual('myWishlists', {
+  ref: 'Wishlist',
+  localField: '_id',
+  foreignField: 'createdBy'
+});
+
+userSchema.virtual('subscribedWishlists', {
+  ref: 'Wishlist',
+  localField: '_id',
+  foreignField: 'contributors'
+});
+
 
 userSchema
   .virtual('passwordConfirmation')
