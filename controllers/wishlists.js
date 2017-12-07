@@ -23,6 +23,8 @@ function wishlistsCreate(req, res, next) {
 function wishlistsShow(req, res, next) {
   Wishlist
     .findById(req.params.id)
+    .populate('createdBy')
+    .populate('contributors')
     .exec()
     .then((wishlist) => {
       if(!wishlist) return res.notFound();
@@ -38,6 +40,8 @@ function wishlistsUpdate(req, res, next) {
 
   Wishlist
     .findById(req.params.id)
+    .populate('createdBy')
+    .populate('contributors')
     .exec()
     .then((wishlist) => {
       if(!wishlist) return res.notFound();

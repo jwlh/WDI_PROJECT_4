@@ -1,5 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
+// import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 class WishlistsIndex extends React.Component {
@@ -19,13 +22,11 @@ class WishlistsIndex extends React.Component {
       <div>
         {this.state.wishlists.map(wishlist =>
           <div key={wishlist.id}>
-            {wishlist.items.map((item, i) =>
-              <div key={i}>
-                <p>{item.product}</p>
-                <p>{item.url}</p>
-              </div>
-            )}
-            <p>{wishlist.createdBy.username}</p>
+            <Link to={`/wishlists/${wishlist.id}`}>
+              <img src={wishlist.createdBy.image}></img>
+              <h3>{wishlist.createdBy.username}s Wishlist</h3>
+            </Link>
+            <h4>Contributors:</h4>
             {wishlist.contributors.map(contributor =>
               <p key={contributor.id}>{contributor.username}</p>
             )}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Auth from '../../lib/Auth';
 import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
+import { Button, Col } from 'react-bootstrap';
 
 class OAuthButton extends React.Component {
 
@@ -18,7 +19,7 @@ class OAuthButton extends React.Component {
 
     if (!this.props.location.search.match(/code/)) return false;
 
-  
+
     const data = queryString.parse(this.props.location.search);
     data.redirectUri = window.location.origin + window.location.pathname;
 
@@ -38,11 +39,9 @@ class OAuthButton extends React.Component {
 
 
     return (
-      <a
-        className="btn btn-primary" href={this.provider.authLink}
-        onClick={this.setProvider}
-      >
-        {this.props.children}</a>
+      <Col smOffset={3}>
+        <Button className="btn-primary" href={this.provider.authLink} onClick={this.setProvider}>{this.props.children}</Button>
+      </Col>
     );
   }
 }

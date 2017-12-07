@@ -1,15 +1,15 @@
 import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
+const RegisterForm = ({ handleChange, handleSubmit, user}) => {
   return (
 
     <Form horizontal onSubmit={handleSubmit}>
       <FormGroup controlId="firstName">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           First Name
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="text"
             name="firstName"
@@ -20,10 +20,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </Col>
       </FormGroup>
       <FormGroup controlId="lastName">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           Last Name
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="text"
             name="lastName"
@@ -34,10 +34,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </Col>
       </FormGroup>
       <FormGroup controlId="username">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           Username
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="text"
             name="username"
@@ -49,10 +49,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
       </FormGroup>
 
       <FormGroup controlId="formHorizontalEmail">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           Email
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="text"
             name="email"
@@ -64,10 +64,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
       </FormGroup>
 
       <FormGroup controlId="formHorizontalPassword">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           Password
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="password"
             name="password"
@@ -78,10 +78,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </Col>
       </FormGroup>
       <FormGroup controlId="formHorizontalConfirmPassword">
-        <Col componentClass={ControlLabel} sm={2}>
+        <Col componentClass={ControlLabel} sm={3}>
           Confirm Password
         </Col>
-        <Col sm={10}>
+        <Col sm={8}>
           <FormControl
             type="password"
             name="passwordConfirmation"
@@ -93,7 +93,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
       </FormGroup>
 
       <FormGroup>
-        <Col smOffset={2} sm={10}>
+        <Col smOffset={3} sm={8}>
           <Button type="submit">
             Register
           </Button>
