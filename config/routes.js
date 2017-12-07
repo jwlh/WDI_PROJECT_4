@@ -15,7 +15,8 @@ router.route('/wishlists/:id')
   .put(secureRoute, wishlists.update)
   .delete(secureRoute, wishlists.delete);
 
-router.route('/users').get(users.index);
+router.route('/users')
+  .get(users.index);
 
 router
   .route('/users/:id')
