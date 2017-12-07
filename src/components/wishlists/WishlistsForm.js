@@ -3,11 +3,11 @@ import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
 function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, state}) {
-  console.log(state);
+
 
   return (
+
     <div>
-      {/* <h3>{wishlist}</h3> */}
       <Form horizontal onSubmit={handleSubmitOnForm}>
         <FormGroup controlId="newItem">
           <Col componentClass={ControlLabel} sm={3}>
@@ -18,6 +18,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               type="text"
               name="product"
               placeholder="Product Name"
+              value={state.newItem.product}
               onChange={handleChangeOnAddItem}
             />
           </Col>
@@ -29,11 +30,12 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               type="text"
               name="url"
               placeholder="Link to Product"
+              value={state.newItem.url}
               onChange={handleChangeOnAddItem}
             />
           </Col>
           <Col smOffset={3} sm={8}>
-            <Button onClick={handleSubmitOnAddItem}>
+            <Button type="button" onClick={handleSubmitOnAddItem}>
               Add this item
             </Button>
           </Col>
@@ -48,10 +50,11 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               name="email"
               placeholder="Add their email here..."
               onChange={handleChangeOnAddContributor}
+              value={state.contributor}
             />
           </Col>
           <Col smOffset={3} sm={8}>
-            <Button onClick={handleSubmitOnAddContributor}>
+            <Button type="button" onClick={handleSubmitOnAddContributor}>
               Add Contributor
             </Button>
           </Col>
@@ -67,6 +70,8 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
         </FormGroup>
       </Form>
     </div>
+
+
   );
 }
 

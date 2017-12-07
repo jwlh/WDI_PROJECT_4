@@ -1,4 +1,5 @@
 const Wishlist = require('../models/wishlist');
+const User = require('../models/user');
 
 function wishlistsIndex(req, res, next) {
   Wishlist
@@ -12,10 +13,31 @@ function wishlistsIndex(req, res, next) {
 
 function wishlistsCreate(req, res, next) {
 
-  req.body.createdBy=req.currentUser;
 
-  Wishlist
-    .create(req.body)
+  req.body.createdBy = req.currentUser;
+
+  const emails = req.body.contributors.map(user => user.email);
+
+  User
+    .find({'email': emails })
+    .then(users => {
+      // if users.length < emails.length
+      // 
+      // if (users.length < emails.length) {
+      //   // find all email addresses that are not in the users array ...FILTER
+      //   const arrayOfExistingUserEmails=  users.map(user => user.email);
+      //   const arrayOfNewEmails = emails.filter(arrayOfExistingUserEmails);
+      //   console.log(arrayOfNewEmails);
+      //   // create users with email addresses that aren't in the array
+      //   // send email to each of these newly created users.... TODO
+      //   // push those users into the req.body.contributors (using concat)
+      // } else {
+      //   req.body.contributors = users;
+      // }
+      req.body.contributors = users;
+
+    })
+    .then(() => Wishlist.create(req.body))
     .then(wishlist => res.status(201).json(wishlist))
     .catch(next);
 }
