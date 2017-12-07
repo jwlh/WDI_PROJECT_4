@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
 
 class WishlistsShow extends React.Component {
   state = {
@@ -42,9 +43,12 @@ class WishlistsShow extends React.Component {
             <h6>Contributors: </h6>
             <ul>
               {this.state.wishlist.contributors.map((contributor, i) =>
-                <li key={i}>{contributor.username}</li>
+                <li key={i}>{contributor.email}</li>
               )}
             </ul>
+          </div>
+          <div>
+            <Link to={`/wishlists/${this.state.wishlist.id}/edit`}>Edit Wishlist</Link>
           </div>
         </div>}
 
