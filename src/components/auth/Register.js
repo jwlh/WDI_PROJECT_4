@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterForm from './RegisterForm';
 import Axios from 'axios';
 
-class Login extends React.Component {
+class Register extends React.Component {
 
   state = {
     user: {
@@ -11,7 +11,8 @@ class Login extends React.Component {
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      locked: ''
     },
     errors: {}
   };
@@ -23,6 +24,7 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState('locked': false);
     Axios.post('/api/register', this.state.user)
       .then(() => {
         this.props.history.push('/login');
@@ -42,4 +44,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Register;

@@ -95,7 +95,7 @@ class WishlistsNew extends React.Component {
               <h6>Contributors: </h6>
               <ul>
                 {this.state.wishlist.contributors.map((contributor, i) =>
-                  <li key={i}>{contributor.username}</li>
+                  <li key={i}>{contributor.email}</li>
                 )}
               </ul>
             </div>

@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
   email: {type: String, unique: 'That email has already been taken', required: true},
   password: {type: String},
   facebookId: {type: String},
-  image: {type: String}
+  image: {type: String},
+  locked: {type: Boolean, default: true}
 });
 
 userSchema.virtual('myWishlists', {
@@ -31,11 +32,13 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.facebookId) {
-    this.invalidate('password', 'Password is required');
-  }
-  if(!this.password && this._passwordConfirmation !== this.password) {
-    this.invalidate('passwordConfirmation', 'Passwords do not match');
+  if (this.locked === false) {
+    if(!this.password && !this.facebookId) {
+      this.invalidate('password', 'Password is required');
+    }
+    if(!this.password && this._passwordConfirmation !== this.password) {
+      this.invalidate('passwordConfirmation', 'Passwords do not match');
+    }
   }
   next();
 });

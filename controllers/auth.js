@@ -4,6 +4,7 @@ const User = require('../models/user');
 
 
 function register(req, res, next){
+  req.body.locked = false;
   User
     .create(req.body)
     .then(user => {
