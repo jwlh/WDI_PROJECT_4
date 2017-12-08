@@ -25,7 +25,7 @@ class WishlistsIndex extends React.Component {
             <Col xs={6} md={4} key={wishlist.id}>
               <Thumbnail responsive="true" src='../../assets/images/wishlist-image.jpg'>
                 <Link to={`/wishlists/${wishlist.id}`}>
-                  <h3>{wishlist.createdBy.username}&apos;s {wishlist.wishlistName}</h3>
+                  <h3>{wishlist.createdBy.username}&apos;s <br/> {wishlist.wishlistName}</h3>
                 </Link>
                 <h4>Contributors:</h4>
                 {wishlist.contributors.map(contributor =>

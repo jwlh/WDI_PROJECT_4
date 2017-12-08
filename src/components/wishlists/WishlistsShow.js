@@ -14,7 +14,6 @@ class WishlistsShow extends React.Component {
     Axios
       .get(`/api/wishlists/${this.props.match.params.id}`)
       .then(res => {
-        console.log(res.data);
         this.setState({ wishlist: res.data });
       })
       .catch(err => {
@@ -24,7 +23,6 @@ class WishlistsShow extends React.Component {
   }
 
   buyItem(item) {
-    console.log(item);
     item.bought = true;
     this.setState(item);
     Axios
@@ -35,7 +33,6 @@ class WishlistsShow extends React.Component {
   }
 
   render() {
-    console.log('wishlist.contributors', _.includes(this.state.wishlist.contributors, Auth.getPayload()));
     return(
       <div>
 

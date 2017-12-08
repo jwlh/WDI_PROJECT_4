@@ -31,7 +31,6 @@ class WishlistsEdit extends React.Component {
     Axios
       .get(`/api/wishlists/${this.props.match.params.id}`)
       .then(res => {
-        console.log(res.data);
         this.setState({ wishlist: res.data });
       })
       .catch(err => {
@@ -82,7 +81,6 @@ class WishlistsEdit extends React.Component {
   }
 
   setBought(item) {
-    console.log(item);
     item.bought = true;
     this.setState(item);
     Axios
@@ -92,7 +90,6 @@ class WishlistsEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
   resetBought(item) {
-    console.log(item);
     item.bought = false;
     this.setState(item);
     Axios

@@ -22,7 +22,7 @@ class UsersEdit extends React.Component {
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => {
-        console.log('data coming back from api in get request',res.data);
+
         this.setState({ user: res.data });
       })
       .catch(err => {
@@ -38,8 +38,6 @@ class UsersEdit extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // this.setState('locked': false);
-    console.log('data being sent to api in put request',this.state.user);
     Axios
       .put(`/api/users/${this.props.match.params.id}`, this.state.user, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
