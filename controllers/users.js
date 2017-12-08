@@ -12,7 +12,14 @@ function usersIndex(req, res, next) {
 function usersShow(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('myWishlists subscribedWishlists')
+    .populate({
+      path: 'myWishlists',
+      populate: { path: 'createdBy' }
+    })
+    .populate({
+      path: 'subscribedWishlists',
+      populate: { path: 'createdBy' }
+    })
     .exec()
     .then((user) => {
       res.status(200).json(user);

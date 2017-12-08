@@ -1,4 +1,4 @@
-const Wishlist = require('../models/wishlist');
+ const Wishlist = require('../models/wishlist');
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
 const Promise = require('bluebird');
@@ -48,7 +48,7 @@ function wishlistsCreate(req, res, next) {
         const arrayOfNewEmails = emails.filter(email => arrayOfExistingUserEmails.includes(email));
 
         // create users with email addresses that aren't in the array
-        const usersToCreate = arrayOfNewEmails.map(email => User.create({ email, username: email }));
+        const usersToCreate = arrayOfNewEmails.map(email => User.create({ email, username: 'Not yet fully registered' }));
         return Promise.all(usersToCreate)
           // .then(newUsers => send emails to users...)
 

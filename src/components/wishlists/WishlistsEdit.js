@@ -10,6 +10,7 @@ import WishlistsForm from './WishlistsForm';
 class WishlistsEdit extends React.Component {
   state = {
     wishlist: {
+      name: '',
       items: [],
       createdBy: {},
       contributors: []
@@ -76,7 +77,28 @@ class WishlistsEdit extends React.Component {
       .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push(`/api/wishlists/${this.props.match.params.id}`))
+      .catch(err => this.setState({ errors: err.response.data.errors }));
+  }
+
+  setBought(item) {
+    console.log(item);
+    item.bought = true;
+    this.setState(item);
+    Axios
+      .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }));
+  }
+  resetBought(item) {
+    console.log(item);
+    item.bought = false;
+    this.setState(item);
+    Axios
+      .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
@@ -99,8 +121,10 @@ class WishlistsEdit extends React.Component {
             <ListGroup>
               {this.state.wishlist.items.map((item, i) =>
                 <ListGroupItem key={i} header={item.product}>
-                  {!item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                  {!item.bought && <Button bsStyle="info">Mark this as bought</Button>}
+                  <Button bsStyle="info" href={item.url}>Link to buy</Button>
+                  {!item.bought && <Button bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
+                  {item.bought && <Button bsStyle="info" onClick={() => this.resetBought(item)}>Mark this as not bought</Button>}
+                  {!item.bought && <Button bsStyle="danger">Delete this item from your list</Button>}
                   {item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
                 </ListGroupItem>
               )}

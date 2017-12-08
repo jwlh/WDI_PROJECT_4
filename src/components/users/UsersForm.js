@@ -3,7 +3,7 @@ import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-b
 
 
 
-const RegisterForm = ({ handleChange, handleSubmit, user}) => {
+const UsersForm = ({ handleChange, handleSubmit, user}) => {
   return (
 
     <Form horizontal onSubmit={handleSubmit}>
@@ -67,21 +67,20 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
 
       <FormGroup controlId="formHorizontalPassword">
         <Col componentClass={ControlLabel} sm={3}>
-          Password
+          Change Password
         </Col>
         <Col sm={8}>
           <FormControl
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Only fill this in if you want to change your password"
             onChange={handleChange}
-            value={user.password}
           />
         </Col>
       </FormGroup>
       <FormGroup controlId="formHorizontalConfirmPassword">
         <Col componentClass={ControlLabel} sm={3}>
-          Confirm Password
+          Confirm New Password
         </Col>
         <Col sm={8}>
           <FormControl
@@ -89,7 +88,6 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
             name="passwordConfirmation"
             placeholder="Confirm Password"
             onChange={handleChange}
-            value={user.passwordConfirmation}
           />
         </Col>
       </FormGroup>
@@ -97,7 +95,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
       <FormGroup>
         <Col smOffset={3} sm={8}>
           <Button type="submit">
-            Register
+            Update
           </Button>
         </Col>
       </FormGroup>
@@ -105,4 +103,4 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
   );
 };
 
-export default RegisterForm;
+export default UsersForm;

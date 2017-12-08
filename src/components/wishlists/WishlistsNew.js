@@ -10,6 +10,7 @@ import WishlistsForm from './WishlistsForm';
 class WishlistsNew extends React.Component {
   state = {
     wishlist: {
+      name: '',
       items: [],
       createdBy: {},
       contributors: []
@@ -24,6 +25,11 @@ class WishlistsNew extends React.Component {
     },
     errors: {}
   };
+
+  handleChangeOnName = ({ target: { name, value } }) => {
+    const newWishlist = Object.assign({}, this.state.wishlist, { [name]: value });
+    this.setState({ newWishlist });
+  }
 
   handleChangeOnAddItem = ({ target: { name, value } }) => {
     const newItem = Object.assign({}, this.state.newItem, { [name]: value });
@@ -62,7 +68,7 @@ class WishlistsNew extends React.Component {
       .post('/api/wishlists', this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      .then(() => this.props.history.push('/'))
+      .then((res) => this.props.history.push(`/api/wishlists/${res.data.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
@@ -75,6 +81,7 @@ class WishlistsNew extends React.Component {
           handleSubmitOnAddItem={this.handleSubmitOnAddItem}
           handleChangeOnAddContributor={this.handleChangeOnAddContributor}
           handleSubmitOnAddContributor={this.handleSubmitOnAddContributor}
+          handleChangeOnName={this.handleChangeOnName}
           wishlist={this.state.wishlist}
           state={this.state}
           errors={this.state.errors}

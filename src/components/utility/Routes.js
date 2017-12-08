@@ -10,6 +10,7 @@ import WishlistsNew from '../wishlists/WishlistsNew';
 import WishlistsEdit from '../wishlists/WishlistsEdit';
 import UsersIndex from '../users/UsersIndex';
 import UsersShow from '../users/UsersShow';
+import UsersEdit from '../users/UsersEdit';
 
 
 const Routes = () => {
@@ -20,10 +21,10 @@ const Routes = () => {
       <Route exact path="/wishlists/:id/edit" component={WishlistsEdit} />
       <Route exact path="/wishlists/:id" component={WishlistsShow} />
       <Route exact path="/users" component={UsersIndex} />
+      <Route exact path="/users/:id/edit" component={UsersEdit} />
       <Route exact path="/users/:id" component={UsersShow} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
-
     </Switch>
   );
 };

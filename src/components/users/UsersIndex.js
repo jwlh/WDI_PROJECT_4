@@ -25,7 +25,6 @@ class UsersIndex extends React.Component {
             <Link to={`/users/${user.id}`}>
               <img src={user.image}></img>
               <h3>{user.username}</h3>
-              <h4>{user.email}</h4>
             </Link>
           </div>
         )}

@@ -18,7 +18,8 @@ User
     email: 'jonny@jonny.com',
     password: 'password',
     passwordConfirmation: 'password',
-    subscribedWishlists: []
+    subscribedWishlists: [],
+    locked: false
   }, {
     firstName: 'louise',
     lastName: 'hall',
@@ -26,12 +27,32 @@ User
     email: 'louise@louise.com',
     password: 'password',
     passwordConfirmation: 'password',
-    subscribedWishlists: []
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'ralph',
+    lastName: 'hall',
+    username: 'ralphhall',
+    email: 'ralph@ralph.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'gareth',
+    lastName: 'hall',
+    username: 'garethhall',
+    email: 'gareth@gareth.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
   }])
   .then((users) => {
     console.log(`${users.length} users created`);
     return Wishlist
       .create([{
+        wishlistName: 'Christmas List',
         items: [{
           product: 'Amazon Echo',
           url: 'https://www.amazon.co.uk/dp/B06Y5ZW72J/ref=gw_aucc_rad_qh-snow?pf_rd_p=6450f0d6-9a4c-417f-9f1d-815a241b91b4&pf_rd_r=5KX6XS738EDH9FJQPCDV',
@@ -58,8 +79,9 @@ User
           bought: false
         }],
         createdBy: users[0],
-        contributors: [users[1]]
+        contributors: [users[1], users[2], users[3]]
       }, {
+        wishlistName: 'Christmas List',
         items: [{
           product: 'make-up brush cleaner',
           url: 'https://alexiaco.com/collections/home/products/electric-makeup-brush-cleaner-dryer',
@@ -86,7 +108,32 @@ User
           bought: false
         }],
         createdBy: users[1],
-        contributors: [users[0]]
+        contributors: [users[0], users[2], users[3]]
+      }, {
+        wishlistName: 'Christmas List',
+        items: [{
+          product: 'sausages',
+          url: 'https://www.amazon.co.uk/Heck-Percent-Pork-Sausages-400/dp/B00D24R6KS/ref=sr_1_1?ie=UTF8&qid=1512743147&sr=8-1&ppw=fresh&keywords=sausages',
+          bought: false
+        }, {
+          product: 'fluffy toy',
+          url: 'https://www.amazon.co.uk/KONG-Scrunch-Knots-Medium-Large/dp/B00EAN1U7A/ref=sr_1_8?s=pet-supplies&ie=UTF8&qid=1512743196&sr=1-8&keywords=dog+toys',
+          bought: false
+        }, {
+          product: 'tennis balls',
+          url: 'https://www.amazon.co.uk/KONG-Squeakair-Dog-Tennis-Ball/dp/B000A8CUSM/ref=sr_1_10?s=pet-supplies&ie=UTF8&qid=1512743196&sr=1-10&keywords=dog+toys',
+          bought: true
+        }, {
+          product: 'new bed',
+          url: 'https://www.amazon.co.uk/KosiPet-Fleece-Rhomboid-Memory-Waterproof/dp/B004OOA2JW/ref=lp_471358031_1_16?s=pet-supplies&ie=UTF8&qid=1512743331&sr=1-16',
+          bought: false
+        }, {
+          product: 'towel coat',
+          url: 'https://www.amazon.co.uk/Dog-Drying-Coat-Red-15-18Inches/dp/B01LXO71VJ/ref=lp_471377031_1_18?s=pet-supplies&ie=UTF8&qid=1512743391&sr=1-18',
+          bought: true
+        }],
+        createdBy: users[2],
+        contributors: [users[0], users[1], users[3]]
       }])
       .then((wishlists) => {
         console.log(`${wishlists.length} wishlists created`);

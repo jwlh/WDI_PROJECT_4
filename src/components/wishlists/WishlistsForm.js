@@ -2,13 +2,27 @@ import React from 'react';
 
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, state}) {
+function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, handleChangeOnName, state}) {
 
 
   return (
 
     <div>
       <Form horizontal onSubmit={handleSubmitOnForm}>
+        <FormGroup controlId="wishlistName">
+          <Col componentClass={ControlLabel} sm={3}>
+            Wishlist Name
+          </Col>
+          <Col sm={8}>
+            <FormControl
+              type="text"
+              name="wishlistName"
+              placeholder="Pick a name for you Wishlist"
+              value={state.wishlist.wishlistName}
+              onChange={handleChangeOnName}
+            />
+          </Col>
+        </FormGroup>
         <FormGroup controlId="newItem">
           <Col componentClass={ControlLabel} sm={3}>
             Product Name
@@ -50,7 +64,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               name="email"
               placeholder="Add their email here..."
               onChange={handleChangeOnAddContributor}
-              value={state.contributor}
+              value={state.newContributor.email}
             />
           </Col>
           <Col smOffset={3} sm={8}>
