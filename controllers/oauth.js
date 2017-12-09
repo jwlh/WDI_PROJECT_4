@@ -37,6 +37,7 @@ function facebook(req, res, next) {
               email: profile.email
             });
           }
+          console.log(profile);
           user.facbookId = profile.id;
           user.image = profile.picture.data.url;
           return user.save();

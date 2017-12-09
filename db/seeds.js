@@ -12,37 +12,91 @@ Wishlist.collection.drop();
 
 User
   .create([{
-    firstName: 'jonny',
-    lastName: 'hall',
+    firstName: 'Jonny',
+    lastName: 'Hall',
     username: 'jonnyhall',
-    email: 'jonny@jonny.com',
+    email: 'jonnyhall@me.com',
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
     locked: false
   }, {
-    firstName: 'louise',
-    lastName: 'hall',
-    username: 'louisehall',
+    firstName: 'Louise',
+    lastName: 'Hall',
+    username: 'louise',
     email: 'louise@louise.com',
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
     locked: false
   }, {
-    firstName: 'ralph',
-    lastName: 'hall',
-    username: 'ralphhall',
+    firstName: 'Ralph',
+    lastName: 'Hall',
+    username: 'ralph',
     email: 'ralph@ralph.com',
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
     locked: false
   }, {
-    firstName: 'gareth',
-    lastName: 'hall',
-    username: 'garethhall',
-    email: 'gareth@gareth.com',
+    firstName: 'Michael',
+    lastName: 'Hall',
+    username: 'michael',
+    email: 'michael@michael.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Susanne',
+    lastName: 'Hall',
+    username: 'susanne',
+    email: 'susanne@susanne.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Moyra',
+    lastName: 'Marshall',
+    username: 'moyra',
+    email: 'moyra@moyra.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Paul',
+    lastName: 'Marshall',
+    username: 'Spot On',
+    email: 'paul@paul.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Peter',
+    lastName: 'Smith',
+    username: 'psmith',
+    email: 'peter@peter.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Peta',
+    lastName: 'Marot',
+    username: 'glitterball',
+    email: 'peta@peta.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    subscribedWishlists: [],
+    locked: false
+  }, {
+    firstName: 'Celine',
+    lastName: 'Bird',
+    username: 'Celine',
+    email: 'celine@celine.com',
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
@@ -79,7 +133,7 @@ User
           bought: false
         }],
         createdBy: users[0],
-        contributors: [users[1], users[2], users[3]]
+        contributors: [users[1], users[2], users[3], users[4], users[5], users[6], users[7], users[8]]
       }, {
         wishlistName: 'Christmas List',
         items: [{
@@ -108,7 +162,7 @@ User
           bought: false
         }],
         createdBy: users[1],
-        contributors: [users[0], users[2], users[3]]
+        contributors: [users[0], users[2], users[3], users[4], users[5], users[6], users[7], users[8]]
       }, {
         wishlistName: 'Christmas List',
         items: [{
@@ -133,7 +187,36 @@ User
           bought: true
         }],
         createdBy: users[2],
-        contributors: [users[0], users[1], users[3]]
+        contributors: [users[0], users[2], users[3], users[4], users[5], users[6], users[7], users[8], users[9]]
+      }, {
+        wishlistName: 'Christmas List',
+        items: [{
+          product: 'make-up brush cleaner',
+          url: 'https://alexiaco.com/collections/home/products/electric-makeup-brush-cleaner-dryer',
+          bought: false
+        }, {
+          product: 'hair curling iron',
+          url: 'https://www.tymestyle.co.uk/?https%3A%2F%2Fwww.tymestyle.co.uk%2F%3Futm_source=Facebook&utm_medium=CPC&utm_campaign=RoxyUK',
+          bought: false
+        }, {
+          product: 'handbag tidy',
+          url: 'https://www.aspinaloflondon.com/products/handbag-tidy-all-in-jet-black-lizard',
+          bought: true
+        }, {
+          product: 'throw',
+          url: 'https://m.johnlewis.com/john-lewis-honeybee-cotton-knitted-throw/smoke/p1966015',
+          bought: false
+        }, {
+          product: 'candle',
+          url: 'https://www.anthropologie.com/en-gb/shop/capri-blue-mercury-glass-jar-candle?category=candles&color=007',
+          bought: true
+        }, {
+          product: 'Book about bars',
+          url: 'https://www.amazon.co.uk/Straight-Up-insiders-interesting-experiences/dp/1784722731/ref=nodl_',
+          bought: false
+        }],
+        createdBy: users[9],
+        contributors: [users[0], users[1], users[5], users[6]]
       }])
       .then((wishlists) => {
         console.log(`${wishlists.length} wishlists created`);
