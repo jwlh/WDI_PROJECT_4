@@ -42,6 +42,7 @@ class WishlistsShow extends React.Component {
             {this.state.wishlist.items.map((item, i) =>
               <ListGroupItem key={i} header={item.product}>
                 {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
+                {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
                 {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && !item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
                 {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
               </ListGroupItem>
@@ -49,11 +50,11 @@ class WishlistsShow extends React.Component {
           </ListGroup>
           <div>
             <h6>Contributors: </h6>
-            <ul>
-              {this.state.wishlist.contributors.map((contributor, i) =>
-                <li key={i}>{contributor.email}</li>
+            <ListGroup fill="true">
+              {this.state.wishlist.contributors.map(contributor =>
+                <ListGroupItem key={contributor.id} >{contributor.firstName} {this.state.wishlist.createdBy.id === Auth.getPayload().userId && contributor.email}</ListGroupItem>
               )}
-            </ul>
+            </ListGroup>
           </div>
           {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <div>
             <Link to={`/wishlists/${this.state.wishlist.id}/edit`}>Edit Wishlist</Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../../lib/Auth';
 import { Link, withRouter } from 'react-router-dom';
-import { Navbar, NavItem, Nav} from 'react-bootstrap';
+import { Navbar, NavItem, Nav, Image} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 const myNavbar = ({ history }) => {
@@ -18,7 +18,12 @@ const myNavbar = ({ history }) => {
 
     <Navbar collapseOnSelect>
       <Navbar.Header>
-        <Link to="/"><Navbar.Brand>iWish</Navbar.Brand></Link>
+        <Image src="../../assets/images/iWish_icon.svg" style={{height: '48px'}}/>
+        <Link to="/">
+          <Navbar.Brand>
+            iWish
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>

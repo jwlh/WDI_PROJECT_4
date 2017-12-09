@@ -32,7 +32,7 @@ class WishlistsIndex extends React.Component {
 
                   <ListGroup fill>
                     {wishlist.contributors.map(contributor =>
-                      <ListGroupItem key={contributor.id} style={{marginRight: '10px'}}>{contributor.username}</ListGroupItem>
+                      <ListGroupItem key={contributor.id} style={{marginRight: '10px'}}>{contributor.firstName}</ListGroupItem>
                     )}
                   </ListGroup>
                 </Panel>
