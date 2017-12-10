@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 class WishlistsShow extends React.Component {
   state = {
-    wishlist: {}
+    wishlist: {},
+    arrayOfContributorIds: []
   }
 
   componentDidMount() {
@@ -15,6 +16,7 @@ class WishlistsShow extends React.Component {
       .get(`/api/wishlists/${this.props.match.params.id}`)
       .then(res => {
         this.setState({ wishlist: res.data });
+        this.state.wishlist.contributors.map(contributor =>  this.state.arrayOfContributorIds.push(contributor.id));
       })
       .catch(err => {
         if(err.response.status === 404) return this.props.history.replace('/404');
@@ -33,6 +35,12 @@ class WishlistsShow extends React.Component {
   }
 
   render() {
+    console.log('wishlist.contributors', this.state.wishlist.contributors);
+    console.log('Auth.getPayload.userId', Auth.getPayload().userId);
+    console.log('this.state.arrayOfContributorIds',this.state.arrayOfContributorIds);
+    console.log('includes test', _.includes(this.state.arrayOfContributorIds, Auth.getPayload().userId));
+    console.log('includes test 2', _.includes(this.state.wishlist.contributors, Auth.getPayload().userId));
+
     return(
       <div>
 
@@ -41,10 +49,11 @@ class WishlistsShow extends React.Component {
           <ListGroup>
             {this.state.wishlist.items.map((item, i) =>
               <ListGroupItem key={i} header={item.product}>
-                {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
+                {/* {_.includes(this.state.arrayOfContributorIds, Auth.getPayload().userId) && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>} */}
+                {!item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
                 {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && !item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
-                {_.includes(this.state.wishlist.contributors, Auth.getPayload()) && item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
+                {!item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
+                {item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
               </ListGroupItem>
             )}
           </ListGroup>

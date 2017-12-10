@@ -240,8 +240,8 @@ User
           url: 'https://www.uncommongoods.com/product/gardeners-tool-seat',
           bought: true
         }],
-        createdBy: users[4],
-        contributors: [users[0], users[1], users[2], users[5]]
+        createdBy: users[3],
+        contributors: [users[0], users[1], users[2], users[4]]
       }, {
         wishlistName: 'Christmas Ideas',
         items: [{

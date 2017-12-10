@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 const BackButton = ({ history }) => {
   return (
     <Button onClick={history.goBack}>
-      Back
+      <i className="fa fa-arrow-left" aria-hidden="true"></i>Back
     </Button>
   );
 };
