@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 
 
 import Login from '../auth/Login';
@@ -17,12 +18,12 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={WishlistsIndex} />
-      <Route exact path="/wishlists/new" component={WishlistsNew} />
-      <Route exact path="/wishlists/:id/edit" component={WishlistsEdit} />
-      <Route exact path="/wishlists/:id" component={WishlistsShow} />
+      <ProtectedRoute exact path="/wishlists/new" component={WishlistsNew} />
+      <ProtectedRoute exact path="/wishlists/:id/edit" component={WishlistsEdit} />
+      <ProtectedRoute exact path="/wishlists/:id" component={WishlistsShow} />
       <Route exact path="/users" component={UsersIndex} />
-      <Route exact path="/users/:id/edit" component={UsersEdit} />
-      <Route exact path="/users/:id" component={UsersShow} />
+      <ProtectedRoute exact path="/users/:id/edit" component={UsersEdit} />
+      <ProtectedRoute exact path="/users/:id" component={UsersShow} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
     </Switch>
