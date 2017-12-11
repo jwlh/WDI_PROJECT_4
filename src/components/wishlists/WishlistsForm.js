@@ -8,6 +8,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
   return (
 
     <div>
+      <h3>{state.wishlist.wishlistName}</h3>
       <Form horizontal onSubmit={handleSubmitOnForm}>
         <FormGroup controlId="wishlistName">
           <Col componentClass={ControlLabel} sm={3}>
@@ -17,7 +18,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
             <FormControl
               type="text"
               name="wishlistName"
-              placeholder="Pick a name for you Wishlist"
+              placeholder="Change the name of you Wishlist"
               value={state.wishlist.wishlistName}
               onChange={handleChangeOnName}
             />

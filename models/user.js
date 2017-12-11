@@ -24,11 +24,6 @@ userSchema.virtual('subscribedWishlists', {
   foreignField: 'contributors'
 });
 
-userSchema.virtual('stringId').get(function() {
-  return this._id.toString();
-});
-
-
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

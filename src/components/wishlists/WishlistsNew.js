@@ -10,7 +10,7 @@ import WishlistsForm from './WishlistsForm';
 class WishlistsNew extends React.Component {
   state = {
     wishlist: {
-      name: '',
+      wishlistName: '',
       items: [],
       createdBy: {},
       contributors: []
@@ -26,9 +26,9 @@ class WishlistsNew extends React.Component {
     errors: {}
   };
 
-  handleChangeOnName = ({ target: { name, value } }) => {
-    const newWishlist = Object.assign({}, this.state.wishlist, { [name]: value });
-    this.setState({ newWishlist });
+  handleChangeOnName = ({ target: { value } }) => {
+    const newWishlist = Object.assign({}, this.state.wishlist, { wishlistName: value });
+    this.setState({ wishlist: newWishlist });
   }
 
   handleChangeOnAddItem = ({ target: { name, value } }) => {
@@ -68,7 +68,7 @@ class WishlistsNew extends React.Component {
       .post('/api/wishlists', this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      .then((res) => this.props.history.push(`/api/wishlists/${res.data.id}`))
+      .then((res) => this.props.history.push(`/wishlists/${res.data.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 

@@ -2,8 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 
-
-
 import { ListGroup, ListGroupItem, Button, Col} from 'react-bootstrap';
 
 import WishlistsForm from './WishlistsForm';
@@ -11,7 +9,7 @@ import WishlistsForm from './WishlistsForm';
 class WishlistsEdit extends React.Component {
   state = {
     wishlist: {
-      name: '',
+      wishlistName: '',
       items: [],
       createdBy: {},
       contributors: []
@@ -27,7 +25,6 @@ class WishlistsEdit extends React.Component {
     errors: {}
   };
 
-
   componentDidMount() {
     Axios
       .get(`/api/wishlists/${this.props.match.params.id}`)
@@ -38,6 +35,11 @@ class WishlistsEdit extends React.Component {
         if(err.response.status === 404) return this.props.history.replace('/404');
         console.log(err);
       });
+  }
+
+  handleChangeOnName = ({ target: { value } }) => {
+    const newWishlist = Object.assign({}, this.state.wishlist, { wishlistName: value });
+    this.setState({ wishlist: newWishlist });
   }
 
   handleChangeOnAddItem = ({ target: { name, value } }) => {
@@ -73,11 +75,12 @@ class WishlistsEdit extends React.Component {
 
   handleSubmitOnForm = (e) => {
     e.preventDefault();
+    console.log('state on submit', this.state);
     Axios
       .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      .then(() => this.props.history.push(`/api/wishlists/${this.props.match.params.id}`))
+      .then(() => this.props.history.push(`/wishlists/${this.state.wishlist.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
@@ -100,6 +103,13 @@ class WishlistsEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  deleteList = () => {
+    Axios
+      .delete(`/api/wishlists/${this.props.match.params.id}`, {headers: { Authorization: `Bearer ${Auth.getToken()}`}
+      })
+      .then(() => this.props.history.push('/'));
+  }
+
   render() {
     return (
       <div>
@@ -109,7 +119,7 @@ class WishlistsEdit extends React.Component {
           handleSubmitOnAddItem={this.handleSubmitOnAddItem}
           handleChangeOnAddContributor={this.handleChangeOnAddContributor}
           handleSubmitOnAddContributor={this.handleSubmitOnAddContributor}
-          wishlist={this.state.wishlist}
+          handleChangeOnName={this.handleChangeOnName}
           state={this.state}
           errors={this.state.errors}
         />
@@ -133,11 +143,12 @@ class WishlistsEdit extends React.Component {
           <Col sm={3}><h4>Contributors</h4></Col>
           <Col sm={8}>
             <ListGroup fill="true">
-              {this.state.wishlist.contributors.map(contributor =>
-                <ListGroupItem key={contributor.id} >{contributor.firstName} {this.state.wishlist.createdBy.id === Auth.getPayload().userId && contributor.email}</ListGroupItem>
+              {this.state.wishlist.contributors.map((contributor, i) =>
+                <ListGroupItem key={i} >{contributor.firstName} {this.state.wishlist.createdBy.id === Auth.getPayload().userId && contributor.email}</ListGroupItem>
               )}
             </ListGroup>
           </Col>
+          <Button bsStyle="danger" onClick={this.deleteList}>Delete</Button>
         </div>
       </div>
     );

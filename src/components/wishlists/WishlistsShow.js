@@ -36,7 +36,7 @@ class WishlistsShow extends React.Component {
       <div>
 
         {this.state.wishlist.items && <div>
-          <h3>{this.state.wishlist.name}</h3>
+          <h3>{this.state.wishlist.wishlistName}</h3>
           <ListGroup>
             {this.state.wishlist.items.map((item, i) =>
               <ListGroupItem key={i} header={item.product}>
