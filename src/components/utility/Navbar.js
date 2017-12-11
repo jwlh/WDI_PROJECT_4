@@ -18,10 +18,10 @@ const myNavbar = ({ history }) => {
 
     <Navbar collapseOnSelect>
       <Navbar.Header>
-        <Image src="../../assets/images/iWish_icon.svg" style={{height: '48px'}}/>
+
         <Link to="/">
           <Navbar.Brand>
-            iWish
+            <Image src="../../assets/images/iWish_icon.svg" style={{height: '48px'}}/>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle />

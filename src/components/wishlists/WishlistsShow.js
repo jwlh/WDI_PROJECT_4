@@ -2,25 +2,19 @@ import React from 'react';
 import Axios from 'axios';
 import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import Auth from '../../lib/Auth';
-import _ from 'lodash';
 import { Link } from 'react-router-dom';
 
 class WishlistsShow extends React.Component {
   state = {
-    wishlist: {},
-    arrayOfContributorIds: []
+    wishlist: {}
   }
 
   componentDidMount() {
     Axios
       .get(`/api/wishlists/${this.props.match.params.id}`)
-      .then(res => {
-        this.setState({ wishlist: res.data });
-        this.state.wishlist.contributors.map(contributor =>  this.state.arrayOfContributorIds.push(contributor.id));
-      })
+      .then(res => this.setState({ wishlist: res.data }))
       .catch(err => {
         if(err.response.status === 404) return this.props.history.replace('/404');
-        console.log(err);
       });
   }
 
@@ -35,12 +29,9 @@ class WishlistsShow extends React.Component {
   }
 
   render() {
-    console.log('wishlist.contributors', this.state.wishlist.contributors);
-    console.log('Auth.getPayload.userId', Auth.getPayload().userId);
-    console.log('this.state.arrayOfContributorIds',this.state.arrayOfContributorIds);
-    console.log('includes test', _.includes(this.state.arrayOfContributorIds, Auth.getPayload().userId));
-    console.log('includes test 2', _.includes(this.state.wishlist.contributors, Auth.getPayload().userId));
-
+    if(!this.state.wishlist.contributors) return null;
+    const contributorIds = this.state.wishlist.contributors.map(contributor =>  contributor.id);
+    const userIsContributor = contributorIds.includes(Auth.getPayload().userId);
     return(
       <div>
 
@@ -49,11 +40,10 @@ class WishlistsShow extends React.Component {
           <ListGroup>
             {this.state.wishlist.items.map((item, i) =>
               <ListGroupItem key={i} header={item.product}>
-                {/* {_.includes(this.state.arrayOfContributorIds, Auth.getPayload().userId) && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>} */}
-                {!item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
                 {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                {!item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
-                {item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
+                {userIsContributor && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
+                {userIsContributor && !item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
+                {userIsContributor && item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
               </ListGroupItem>
             )}
           </ListGroup>
