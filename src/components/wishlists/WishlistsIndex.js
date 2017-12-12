@@ -1,9 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
-import { Image, Grid, Row, Col, Thumbnail, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
+import { Image, Grid, Row, Col, Thumbnail} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
+import css from '../../scss/components/wishlist-index.scss';
 
 class WishlistsIndex extends React.Component {
   state = {
@@ -23,19 +23,12 @@ class WishlistsIndex extends React.Component {
         <Row>
           {this.state.wishlists.map(wishlist =>
             <Col xs={6} md={4} key={wishlist.id}>
-              <Thumbnail>
-                <Image responsive src='../../assets/images/wishlist-image.jpg'/>
-                <Link to={`/wishlists/${wishlist.id}`}>
-                  <h3 id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h3>
-                </Link>
-                <Panel collapsible header="View Contributors">
 
-                  <ListGroup fill>
-                    {wishlist.contributors.map(contributor =>
-                      <ListGroupItem key={contributor.id} style={{marginRight: '10px'}}>{contributor.firstName}</ListGroupItem>
-                    )}
-                  </ListGroup>
-                </Panel>
+              <Thumbnail>
+                <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
+                <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                  <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                </Link>
               </Thumbnail>
 
 
@@ -47,5 +40,7 @@ class WishlistsIndex extends React.Component {
   }
 
 }
+
+
 
 export default WishlistsIndex;
