@@ -1,8 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
-import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Col } from 'react-bootstrap';
 import Auth from '../../lib/Auth';
 import { Link } from 'react-router-dom';
+
+import css from '../../scss/components/wishlist-show.scss';
+
 
 class WishlistsShow extends React.Component {
   state = {
@@ -34,32 +37,34 @@ class WishlistsShow extends React.Component {
     const userIsContributor = contributorIds.includes(Auth.getPayload().userId);
     return(
       <div>
+        <Col smOffset={3} sm={6}>
 
-        {this.state.wishlist.items && <div>
-          <h3>{this.state.wishlist.wishlistName}</h3>
-          <ListGroup>
-            {this.state.wishlist.items.map((item, i) =>
-              <ListGroupItem key={i} header={item.product}>
-                {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                {userIsContributor && !item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                {userIsContributor && !item.bought && <Button bsStyle="info" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
-                {userIsContributor && item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
-              </ListGroupItem>
-            )}
-          </ListGroup>
-          <div>
-            <h6>Contributors: </h6>
-            <ListGroup fill="true">
-              {this.state.wishlist.contributors.map(contributor =>
-                <ListGroupItem key={contributor.id} >{contributor.firstName} {this.state.wishlist.createdBy.id === Auth.getPayload().userId && contributor.email}</ListGroupItem>
+          {this.state.wishlist.items && <div>
+            <h2 className={css.titleFont}>{this.state.wishlist.createdBy.firstName}&apos;s {this.state.wishlist.wishlistName}</h2>
+            <ListGroup>
+              {this.state.wishlist.items.map((item, i) =>
+                <ListGroupItem key={i} header={item.product}>
+                  {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
+                  {userIsContributor && !item.bought && <Button className={css.button} bsStyle="info" href={item.url}>Link to buy</Button>}
+                  {userIsContributor && !item.bought && <Button bsStyle="success" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
+                  {userIsContributor && item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
+                </ListGroupItem>
               )}
             </ListGroup>
-          </div>
-          {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <div>
-            <Link to={`/wishlists/${this.state.wishlist.id}/edit`}>Edit Wishlist</Link>
-          </div>}
-        </div>}
+            {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <div>
+              <Link className={`btn btn-warning ${css.editButton}`} to={`/wishlists/${this.state.wishlist.id}/edit`}>Edit Wishlist</Link>
+            </div>}
+            <div>
+              <h3 className={css.titleFont}>Contributors</h3>
+              <ListGroup fill="true">
+                {this.state.wishlist.contributors.map(contributor =>
+                  <ListGroupItem key={contributor.id} ><strong>{contributor.firstName}</strong>  {this.state.wishlist.createdBy.id === Auth.getPayload().userId &&  contributor.email}</ListGroupItem>
+                )}
+              </ListGroup>
+            </div>
 
+          </div>}
+        </Col>
       </div>
     );
   }

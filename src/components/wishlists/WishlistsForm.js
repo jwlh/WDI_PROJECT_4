@@ -8,7 +8,8 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
   return (
 
     <div>
-      <h3>{state.wishlist.wishlistName}</h3>
+      <Col smOffset={3} sm={8}><h3>{state.wishlist.wishlistName}</h3></Col>
+
       <Form horizontal onSubmit={handleSubmitOnForm}>
         <FormGroup controlId="wishlistName">
           <Col componentClass={ControlLabel} sm={3}>
