@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, Col, FormControl, ControlLabel, Button} from 'react-bootstrap';
 
-function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, handleChangeOnName, state}) {
+import css from '../../scss/components/wishlist-form.scss';
+
+function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, handleChangeOnName, state, deleteList}) {
 
 
   return (
 
     <div>
-      <Col smOffset={3} sm={8}><h3>{state.wishlist.wishlistName}</h3></Col>
+
 
       <Form horizontal onSubmit={handleSubmitOnForm}>
+
         <FormGroup controlId="wishlistName">
           <Col componentClass={ControlLabel} sm={3}>
             Wishlist Name
@@ -25,7 +28,9 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
             />
           </Col>
         </FormGroup>
+
         <FormGroup controlId="newItem">
+
           <Col componentClass={ControlLabel} sm={3}>
             Product Name
           </Col>
@@ -38,6 +43,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               onChange={handleChangeOnAddItem}
             />
           </Col>
+
           <Col componentClass={ControlLabel} sm={3}>
             Link to Product
           </Col>
@@ -50,13 +56,17 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
               onChange={handleChangeOnAddItem}
             />
           </Col>
+
           <Col smOffset={3} sm={8}>
-            <Button type="button" onClick={handleSubmitOnAddItem}>
+            <Button type="button" className={css.button} bsStyle="info" onClick={handleSubmitOnAddItem}>
               Add this item
             </Button>
           </Col>
+
         </FormGroup>
+
         <FormGroup controlId="lastName">
+
           <Col componentClass={ControlLabel} sm={3}>
             Add a Contributor
           </Col>
@@ -70,21 +80,26 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
             />
           </Col>
           <Col smOffset={3} sm={8}>
-            <Button type="button" onClick={handleSubmitOnAddContributor}>
+            <Button type="button" className={css.button} bsStyle="info" onClick={handleSubmitOnAddContributor}>
               Add Contributor
             </Button>
           </Col>
+
         </FormGroup>
 
 
         <FormGroup>
           <Col smOffset={3} sm={8}>
-            <Button type="submit">
+            <Button type="submit" className={css.submitButton} bsStyle="success">
               Submit your list
+            </Button>
+            <Button bsStyle="danger" className={css.deleteButton} onClick={deleteList}>
+              Delete Your List
             </Button>
           </Col>
         </FormGroup>
       </Form>
+      <hr />
     </div>
 
 

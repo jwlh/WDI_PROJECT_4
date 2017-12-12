@@ -1,10 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
-// import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { Col, Thumbnail, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 
+import css from '../../scss/components/users-show.scss';
 
 
 class UsersShow extends React.Component {
@@ -24,28 +25,91 @@ class UsersShow extends React.Component {
       });
   }
 
-
-
   render() {
     return(
       <div>
-        {this.state.user.email && <div>
-          <h3>{this.state.user.firstName} {this.state.user.lastName}</h3>
-          <h4>{this.state.user.username}</h4>
-          <h4>{this.state.user.email}</h4>
-          <img src={this.state.user.image}></img>
-          {this.state.user.id === Auth.getPayload().userId && <Link to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>}
-          <h3>My Wishlists</h3>
-          {this.state.user.myWishlists.map(wishlist =>
-            <Link key={wishlist.id} to={`/wishlists/${wishlist.id}`}>{wishlist.createdBy.username}&apos;s {wishlist.wishlistName}</Link>
-          )}
-          <h3>My Friends Wishlists</h3>
-          {this.state.user.subscribedWishlists.map(wishlist =>
-            <Link key={wishlist.id} to={`/wishlists/${wishlist.id}`}>{wishlist.createdBy.username}&apos;s {wishlist.wishlistName}</Link>
-          )}
+        {this.state.user.id === Auth.getPayload().userId && this.state.user.email && <div>
+          <h3>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
+          <h3>Username: {this.state.user.username}</h3>
+          <h3>Email: {this.state.user.email}</h3>
+
+          {this.state.user.id === Auth.getPayload().userId && <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>}
+          <Row>
+            <h3 className={css.title}>My Wishlists</h3>
+            {this.state.user.myWishlists.map(wishlist =>
+              <Col xs={6} md={4} key={wishlist.id}>
+
+                <Thumbnail>
+                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
+                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </Link>
+                </Thumbnail>
+
+
+              </Col>
+            )}
+          </Row>
+          <Row>
+            <h3 className={css.title}>My Friend&apos;s Wishlists</h3>
+            {this.state.user.subscribedWishlists.map(wishlist =>
+              <Col xs={6} md={4} key={wishlist.id}>
+
+                <Thumbnail>
+                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
+                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </Link>
+                </Thumbnail>
+
+
+              </Col>
+            )}
+          </Row>
 
 
         </div>}
+
+        {this.state.user.id !== Auth.getPayload().userId && this.state.user.email && <div>
+          <h3>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
+          <h3>Username: {this.state.user.username}</h3>
+
+          <Row>
+            <h3 className={css.title}>{this.state.user.firstName}&apos;s Wishlists</h3>
+            {this.state.user.myWishlists.map(wishlist =>
+              <Col xs={6} md={4} key={wishlist.id}>
+
+                <Thumbnail>
+                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
+                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </Link>
+                </Thumbnail>
+
+
+              </Col>
+            )}
+          </Row>
+          <Row>
+            <h3 className={css.title}>{this.state.user.firstName}&apos;s Friend&apos;s Wishlists</h3>
+            {this.state.user.subscribedWishlists.map(wishlist =>
+              <Col xs={6} md={4} key={wishlist.id}>
+
+                <Thumbnail>
+                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
+                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </Link>
+                </Thumbnail>
+
+
+              </Col>
+            )}
+          </Row>
+
+
+        </div>}
+
 
       </div>
     );

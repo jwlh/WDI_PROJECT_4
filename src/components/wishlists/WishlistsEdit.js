@@ -4,7 +4,12 @@ import Auth from '../../lib/Auth';
 
 import { ListGroup, ListGroupItem, Button, Col} from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
+
 import WishlistsForm from './WishlistsForm';
+
+import css from '../../scss/components/wishlist-edit.scss';
+
 
 class WishlistsEdit extends React.Component {
   state = {
@@ -122,34 +127,41 @@ class WishlistsEdit extends React.Component {
           handleChangeOnName={this.handleChangeOnName}
           state={this.state}
           errors={this.state.errors}
+          deleteList={this.deleteList}
         />
-        <div>
-          <Col sm={3}><h4>Listed Items</h4></Col>
-          <Col sm={8}>
-            {this.state.wishlist.items && <div>
-              <ListGroup>
-                {this.state.wishlist.items.map((item, i) =>
-                  <ListGroupItem key={i} header={item.product}>
-                    <Button bsStyle="info" href={item.url}>Link to buy</Button>
-                    {!item.bought && <Button bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
-                    {item.bought && <Button bsStyle="info" onClick={() => this.resetBought(item)}>Mark this as not bought</Button>}
-                    {!item.bought && <Button bsStyle="danger">Delete this item from your list</Button>}
-                    {item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
-                  </ListGroupItem>
-                )}
-              </ListGroup>
-            </div>}
-          </Col>
-          <Col sm={3}><h4>Contributors</h4></Col>
-          <Col sm={8}>
-            <ListGroup fill="true">
-              {this.state.wishlist.contributors.map((contributor, i) =>
-                <ListGroupItem key={i} >{contributor.firstName} {this.state.wishlist.createdBy.id === Auth.getPayload().userId && contributor.email}</ListGroupItem>
+
+
+        {this.state.wishlist.wishlistName && <Col><h3 className={css.listName}>{this.state.wishlist.wishlistName}</h3></Col>}
+        <Col sm={8}>
+          {this.state.wishlist.items && <div>
+            <h4 className={css.titleFont}>List of Gifts:</h4>
+            <ListGroup>
+              {this.state.wishlist.items.map((item, i) =>
+                <ListGroupItem key={i} header={item.product}>
+                  <Button bsStyle="info" className={css.button} href={item.url}>Link to buy</Button>
+                  {!item.bought && <Button className={css.button} bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
+                  {item.bought && <Button bsStyle="info" className={css.button} onClick={() => this.resetBought(item)}>Mark this as not bought</Button>}
+                  {!item.bought && <Button bsStyle="danger" className={css.button}>Delete this item from your list</Button>}
+                  {item.bought && <Button bsStyle="danger" disabled className={css.button}>This item has already been bought</Button>}
+                </ListGroupItem>
               )}
             </ListGroup>
-          </Col>
-          <Button bsStyle="danger" onClick={this.deleteList}>Delete</Button>
-        </div>
+          </div>}
+        </Col>
+
+        <Col sm={4}>
+          {this.state.wishlist.contributors && <div>
+            <h4 className={css.titleFont}>List of Contributors:</h4>
+            <ListGroup fill="true">
+              {this.state.wishlist.contributors.map((contributor, i) =>
+                <Link key={i} to={`/users/${contributor.id}`}>
+                  <ListGroupItem>{contributor.firstName} {contributor.lastName}</ListGroupItem>
+                </Link>
+              )}
+            </ListGroup>
+          </div> }
+        </Col>
+
       </div>
     );
   }

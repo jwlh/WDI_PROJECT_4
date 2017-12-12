@@ -89,9 +89,10 @@ class WishlistsNew extends React.Component {
           errors={this.state.errors}
         />
         <div>
-          <Col smOffset={3} sm={6}>
-
-            {this.state.wishlist.items && <div>
+          {this.state.wishlist.wishlistName && <Col><h3 className={css.listName}>{this.state.wishlist.wishlistName}</h3></Col>}
+          <Col sm={8}>
+            {this.state.wishlist.items[0] && <div>
+              <h4 className={css.titleFont}>List of Gifts:</h4>
               <ListGroup>
                 {this.state.wishlist.items.map((item, i) =>
                   <ListGroupItem key={i} header={item.product}>
@@ -99,37 +100,21 @@ class WishlistsNew extends React.Component {
                   </ListGroupItem>
                 )}
               </ListGroup>
-              <div>
-                {this.state.wishlist.contributors[0] && <h3 className={css.titleFont}>Contributors</h3> }
-
-                <ListGroup fill="true">
-                  {this.state.wishlist.contributors.map((contributor, i) =>
-                    <ListGroupItem key={i} >{contributor.email}</ListGroupItem>
-                  )}
-                </ListGroup>
-              </div>
-
-            </div>}
-          </Col>
-          {/* {this.state.wishlist.items && <div>
-            <ListGroup>
-              {this.state.wishlist.items.map((item, i) =>
-                <ListGroupItem key={i} header={item.product}>
-                  {!item.bought && <Button bsStyle="info" href={item.url}>Link to buy</Button>}
-                  {!item.bought && <Button bsStyle="info">Mark this as bought</Button>}
-                  {item.bought && <Button bsStyle="danger" disabled>This item has already been bought</Button>}
-                </ListGroupItem>
-              )}
-            </ListGroup>
-            <div>
-              <h6>Contributors: </h6>
-              <ul>
-                {this.state.wishlist.contributors.map((contributor, i) =>
-                  <li key={i}>{contributor.email}</li>
-                )}
-              </ul>
             </div>
-          </div>} */}
+            }
+          </Col>
+
+          <Col sm={4}>
+            <div>
+              {this.state.wishlist.contributors[0] && <h4 className={css.titleFont}>List of Contributors:</h4> }
+              <ListGroup fill="true">
+                {this.state.wishlist.contributors[0] && this.state.wishlist.contributors.map((contributor, i) =>
+                  <ListGroupItem key={i} >{contributor.email}</ListGroupItem>
+                )}
+              </ListGroup>
+            </div>
+
+          </Col>
 
         </div>
       </div>

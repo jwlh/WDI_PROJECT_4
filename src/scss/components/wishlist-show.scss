@@ -2,12 +2,24 @@
   margin-right: 5px;
 }
 
+.centered {
+  display: flex;
+  justify-content: center;
+}
 
 .titleFont {
   font-family: 'Poppins', sans-serif;
   text-decoration: underline;
 }
 
+.listName {
+  font-family: 'Poppins', sans-serif;
+  text-decoration: underline;
+  text-align:center;
+}
+
 .editButton {
-  margin-left: 15px;
+  width: 200px;
+  margin: 0 auto;
+  display: block;
 }

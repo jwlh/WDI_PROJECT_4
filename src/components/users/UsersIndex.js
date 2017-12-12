@@ -23,7 +23,6 @@ class UsersIndex extends React.Component {
         {this.state.users.map(user =>
           <div key={user.id}>
             <Link to={`/users/${user.id}`}>
-              <img src={user.image}></img>
               <h3>{user.username}</h3>
             </Link>
           </div>

@@ -29,7 +29,6 @@ const myNavbar = ({ history }) => {
       <Navbar.Collapse>
         <Nav pullRight>
           {Auth.isAuthenticated() && <LinkContainer to="/wishlists/new" className="standard-button"><NavItem>Create a Wishlist</NavItem></LinkContainer>}
-          {Auth.isAuthenticated() && <LinkContainer exact to="/users" className="standard-button"><NavItem>View Users</NavItem></LinkContainer>}
           {Auth.isAuthenticated() && <LinkContainer exact to={`/users/${Auth.getPayload().userId}`} className="standard-button"><NavItem>View Your Profile</NavItem></LinkContainer>}
           {!Auth.isAuthenticated() && <LinkContainer to="/login" className="standard-button"><NavItem>Log In</NavItem></LinkContainer>}
           {!Auth.isAuthenticated() && <LinkContainer to="/register" className="standard-button"><NavItem>Register</NavItem></LinkContainer>}
