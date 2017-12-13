@@ -80,7 +80,6 @@ class WishlistsEdit extends React.Component {
 
   handleSubmitOnForm = (e) => {
     e.preventDefault();
-    console.log('state on submit', this.state);
     Axios
       .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
+import css from '../../scss/components/users-form.scss';
 
 
 const UsersForm = ({ handleChange, handleSubmit, user}) => {
@@ -94,7 +95,7 @@ const UsersForm = ({ handleChange, handleSubmit, user}) => {
 
       <FormGroup>
         <Col smOffset={3} sm={8}>
-          <Button type="submit">
+          <Button type="submit" className={css.submitButton} bsStyle="success">
             Update
           </Button>
         </Col>

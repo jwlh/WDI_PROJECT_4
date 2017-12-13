@@ -3,10 +3,10 @@ import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-b
 
 import OAuthButton from './OAuthButton';
 
-import css from '../../scss/components/Login-form.scss';
+import css from '../../scss/components/register-form.scss';
 
 
-const RegisterForm = ({ handleChange, handleSubmit, user}) => {
+const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
   return (
 
     <Form horizontal onSubmit={handleSubmit}>
@@ -65,6 +65,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
             onChange={handleChange}
             value={user.email}
           />
+          {errors.email && <small>{errors.email}</small>}
         </Col>
       </FormGroup>
 
@@ -80,6 +81,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user}) => {
             onChange={handleChange}
             value={user.password}
           />
+          {errors.password && <small>{errors.password}</small>}
         </Col>
       </FormGroup>
       <FormGroup controlId="formHorizontalConfirmPassword">

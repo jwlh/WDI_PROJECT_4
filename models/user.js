@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
   firstName: {type: String},
   lastName: {type: String},
   username: {type: String},
-  email: {type: String, unique: 'That email has already been taken', required: true},
-  password: {type: String},
+  email: {type: String, unique: 'That email has already been taken', required: 'Please provide an email'},
+  password: {type: String, required: 'Please set a password'},
   facebookId: {type: String},
   image: {type: String},
   locked: {type: Boolean, default: true}
