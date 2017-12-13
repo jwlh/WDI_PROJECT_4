@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Navbar, NavItem, Nav} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
-import css from '../../scss/components/navbar.scss';
+import '../../scss/components/navbar.scss';
 
 
 

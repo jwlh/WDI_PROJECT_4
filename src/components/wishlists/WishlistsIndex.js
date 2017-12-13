@@ -23,15 +23,12 @@ class WishlistsIndex extends React.Component {
         <Row>
           {this.state.wishlists.map(wishlist =>
             <Col xs={12} sm={6} md={4} key={wishlist.id}>
-
-              <Thumbnail>
-                <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
-                <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+              <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                <div className={css.container}>
+                  <img className={css.picture} src='../../assets/images/wishlist-image.jpg'></img>
                   <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
-                </Link>
-              </Thumbnail>
-
-
+                </div>
+              </Link>
             </Col>
           )}
         </Row>

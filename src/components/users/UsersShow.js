@@ -35,33 +35,32 @@ class UsersShow extends React.Component {
 
           {this.state.user.id === Auth.getPayload().userId && <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>}
           <Row>
-            <h3 className={css.title}>My Wishlists</h3>
+            <h3 className={css.sectionTitle}>My Wishlists</h3>
             {this.state.user.myWishlists.map(wishlist =>
               <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
-                <Thumbnail>
-                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
-                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
-                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
-                  </Link>
-                </Thumbnail>
+                <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                  <div className={css.container}>
+                    <img className={css.picture} src='../../assets/images/wishlist-image.jpg'></img>
+                    <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </div>
+                </Link>
 
 
               </Col>
             )}
           </Row>
           <Row>
-            <h3 className={css.title}>My Friend&apos;s Wishlists</h3>
+            <h3 className={css.sectionTitle}>My Friend&apos;s Wishlists</h3>
             {this.state.user.subscribedWishlists.map(wishlist =>
               <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
-                <Thumbnail>
-                  <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
-                  <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
-                    <h2 className={css.linkTitle} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
-                  </Link>
-                </Thumbnail>
-
+                <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
+                  <div className={css.container}>
+                    <img className={css.picture} src='../../assets/images/wishlist-image.jpg'></img>
+                    <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
+                  </div>
+                </Link>
 
               </Col>
             )}

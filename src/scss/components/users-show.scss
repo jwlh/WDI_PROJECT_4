@@ -1,14 +1,28 @@
-.linkTitle {
+.title {
   color: white;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  margin-top: -140px;
-  margin-bottom: 75px;
   margin-left: 5px;
-  z-index: 1000;
+  margin-top: -15%;
+  padding-bottom: 15%;
   opacity: 1;
-  background: rgba(0,0,0,0.5);
   text-shadow: 2px 0 5px #000000;
+}
+
+.picture {
+  position: absolute;
+   top: 0;
+   left: 0;
+   width:100%;
+   z-index: -1;
+}
+
+.container {
+  position:relative;
+  padding-top:33%;
+  overflow: hidden;
+  border: 2px solid black;
+  margin: 15px 1px;
 }
 
 a :hover {
@@ -16,8 +30,16 @@ a :hover {
   text-decoration-color: white;
 }
 
+.logo{
 
-.title {
+}
+
+.outline{
+  border: 2px solid black;
+}
+
+
+.sectionTitle {
   font-family: 'Poppins', sans-serif;
   text-decoration: underline;
   margin-left: 15px;
