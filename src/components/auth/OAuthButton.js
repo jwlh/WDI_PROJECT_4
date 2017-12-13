@@ -4,7 +4,10 @@ import axios from 'axios';
 import Auth from '../../lib/Auth';
 import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
-import { Button, Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+import css from '../../scss/components/OAuth-Button.scss';
+
 
 class OAuthButton extends React.Component {
 
@@ -39,9 +42,7 @@ class OAuthButton extends React.Component {
 
 
     return (
-      <Col smOffset={3}>
-        <Button className="btn-primary" href={this.provider.authLink} onClick={this.setProvider}>{this.props.children}</Button>
-      </Col>
+      <Button className={css.button} bsStyle="primary" href={this.provider.authLink} onClick={this.setProvider}>{this.props.children}</Button>
     );
   }
 }

@@ -1,5 +1,6 @@
 .button {
   margin-right: 5px;
+  min-width: 200px;
 }
 
 .centered {
@@ -19,7 +20,7 @@
 }
 
 .editButton {
-  width: 200px;
+  min-width: 200px;
   margin: 0 auto;
   display: block;
 }

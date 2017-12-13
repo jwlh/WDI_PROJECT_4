@@ -2,7 +2,6 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-import OAuthButton from './OAuthButton';
 
 class Login extends React.Component {
 
@@ -23,7 +22,11 @@ class Login extends React.Component {
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
         Auth.setToken(res.data.token);
-        this.props.history.push('/');
+
+        if (res.data.locked) {
+          return this.props.history.push(`/users/${res.data.id}/edit`);
+        }
+        return this.props.history.push('/');
       })
       .catch(() => {
         Auth.logout();
@@ -39,7 +42,6 @@ class Login extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <OAuthButton provider="facebook">Login with Facebook</OAuthButton>
       </div>
     );
   }

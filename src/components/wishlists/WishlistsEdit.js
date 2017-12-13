@@ -140,7 +140,6 @@ class WishlistsEdit extends React.Component {
                 <ListGroupItem key={i} header={item.product}>
                   <Button bsStyle="info" className={css.button} href={item.url}>Link to buy</Button>
                   {!item.bought && <Button className={css.button} bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
-                  {item.bought && <Button bsStyle="info" className={css.button} onClick={() => this.resetBought(item)}>Mark this as not bought</Button>}
                   {!item.bought && <Button bsStyle="danger" className={css.button}>Delete this item from your list</Button>}
                   {item.bought && <Button bsStyle="danger" disabled className={css.button}>This item has already been bought</Button>}
                 </ListGroupItem>

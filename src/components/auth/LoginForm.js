@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
+import css from '../../scss/components/Login-form.scss';
 
+import OAuthButton from './OAuthButton';
 
 const LoginForm = ({ handleChange, handleSubmit}) => {
   return (
@@ -36,9 +38,12 @@ const LoginForm = ({ handleChange, handleSubmit}) => {
 
       <FormGroup>
         <Col smOffset={3} sm={8}>
-          <Button type="submit">
+          <Button type="submit" className={css.submitButton} bsStyle="success">
             Log In
           </Button>
+        </Col>
+        <Col smOffset={3} sm={8}>
+          <OAuthButton provider="facebook"><i className="fa fa-facebook-official" aria-hidden="true"></i> Login with Facebook</OAuthButton>
         </Col>
       </FormGroup>
     </Form>

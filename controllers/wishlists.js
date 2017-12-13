@@ -2,7 +2,7 @@ const Wishlist = require('../models/wishlist');
 const User = require('../models/user');
 const _ = require('lodash');
 
-const email = require('../lib/email');
+const emailer = require('../lib/emailer');
 
 const Promise = require('bluebird');
 
@@ -41,7 +41,7 @@ function wishlistsCreate(req, res, next) {
           // .then(newUsers => send emails to users...)
           .then(newUsers => {
 
-            const promises = newUsers.map((user) => email.sendMail(user));
+            const promises = newUsers.map((user) => emailer.sendMail(user));
             return Promise.all(promises)
               .then(() => newUsers);
           })
@@ -87,11 +87,52 @@ function wishlistsUpdate(req, res, next) {
     .exec()
     .then((wishlist) => {
       if(!wishlist) return res.notFound();
-      
 
-      wishlist = Object.assign(wishlist, req.body);
-      return wishlist.save();
+      if (req.body.contributors.length > wishlist.contributors.length) {
+        const emails = req.body.contributors.map(user => user.email);
+        let allUsers= [];
+        User
+          .find({ email: emails })
+          .then(users => {
+
+            // find all email addresses that are not in the users array
+            const arrayOfExistingUserEmails = users.map(user => user.email);
+
+            const arrayOfNewEmails = _.difference(emails, arrayOfExistingUserEmails);
+
+            // create users with email addresses that aren't in the array
+            const usersToCreate = arrayOfNewEmails.map(email => User.create({ email, username: 'Not yet fully registered', password: 'password' }));
+            return Promise.all(usersToCreate)
+              // .then(newUsers => send emails to users...)
+              .then(newUsers => {
+
+                const promises = newUsers.map((user) => emailer.sendMail(user));
+                return Promise.all(promises)
+                  .then(() => newUsers);
+              })
+              // push those users into the req.body.contributors along with the users that were found and create the wishlist
+              .then(newUsers => {
+                allUsers = users.concat(newUsers);
+                return allUsers;
+              })
+              .then(allUsers => {
+
+                req.body.contributors = allUsers;
+                wishlist = Object.assign(wishlist, req.body);
+                return wishlist.save();
+              });
+          });
+
+      } else {
+        wishlist = Object.assign(wishlist, req.body);
+        return wishlist.save();
+
+      }
+
+
     })
+
+
     .then(wishlist => res.json(wishlist))
     .catch(next);
 }

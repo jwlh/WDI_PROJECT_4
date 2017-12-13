@@ -2,6 +2,8 @@ import React from 'react';
 import RegisterForm from './RegisterForm';
 import Axios from 'axios';
 
+
+
 class Register extends React.Component {
 
   state = {
@@ -34,12 +36,15 @@ class Register extends React.Component {
 
   render() {
     return (
-      <RegisterForm
-        user={this.state.user}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        errors={this.state.errors}
-      />
+      <div>
+        <RegisterForm
+          user={this.state.user}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          errors={this.state.errors}
+        />
+
+      </div>
     );
   }
 }

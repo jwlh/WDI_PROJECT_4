@@ -1,8 +1,9 @@
 import React from 'react';
 import Auth from '../../lib/Auth';
-import { Link, withRouter } from 'react-router-dom';
-import { Navbar, NavItem, Nav, Image} from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import { Navbar, NavItem, Nav} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
+
 
 const myNavbar = ({ history }) => {
 
@@ -19,20 +20,33 @@ const myNavbar = ({ history }) => {
     <Navbar collapseOnSelect>
       <Navbar.Header>
 
-        <Link to="/">
-          <Navbar.Brand>
-            <Image src="../../assets/images/iWish_icon.svg" style={{height: '48px'}}/>
-          </Navbar.Brand>
-        </Link>
+
+        <Navbar.Brand>
+
+
+        </Navbar.Brand>
+
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
+        <Nav pullLeft>
+
+          <NavItem onClick={history.goBack}>
+            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+          </NavItem>
+
+          <LinkContainer exact to='/'>
+            <NavItem >
+              <i className="fa fa-home" aria-hidden="true"></i> Home
+            </NavItem>
+          </LinkContainer>
+        </Nav>
         <Nav pullRight>
-          {Auth.isAuthenticated() && <LinkContainer to="/wishlists/new" className="standard-button"><NavItem>Create a Wishlist</NavItem></LinkContainer>}
-          {Auth.isAuthenticated() && <LinkContainer exact to={`/users/${Auth.getPayload().userId}`} className="standard-button"><NavItem>View Your Profile</NavItem></LinkContainer>}
-          {!Auth.isAuthenticated() && <LinkContainer to="/login" className="standard-button"><NavItem>Log In</NavItem></LinkContainer>}
-          {!Auth.isAuthenticated() && <LinkContainer to="/register" className="standard-button"><NavItem>Register</NavItem></LinkContainer>}
-          {Auth.isAuthenticated() && <NavItem href="#" onClick={logout} className="standard-button">Log Out</NavItem>}
+          {Auth.isAuthenticated() && <LinkContainer to="/wishlists/new" className="standard-button"><NavItem><i className="fa fa-plus" aria-hidden="true"></i> Create a Wishlist</NavItem></LinkContainer>}
+          {Auth.isAuthenticated() && <LinkContainer exact to={`/users/${Auth.getPayload().userId}`} className="standard-button"><NavItem><i className="fa fa-user" aria-hidden="true"></i> View Your Profile</NavItem></LinkContainer>}
+          {!Auth.isAuthenticated() && <LinkContainer to="/login" className="standard-button"><NavItem><i className="fa fa-sign-in" aria-hidden="true"></i> Log In</NavItem></LinkContainer>}
+          {!Auth.isAuthenticated() && <LinkContainer to="/register" className="standard-button"><NavItem><i className="fa fa-user-plus" aria-hidden="true"></i> Register</NavItem></LinkContainer>}
+          {Auth.isAuthenticated() && <NavItem href="#" onClick={logout} className="standard-button"><i className="fa fa-sign-out" aria-hidden="true"></i> Log Out</NavItem>}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

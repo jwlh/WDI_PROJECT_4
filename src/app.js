@@ -5,7 +5,9 @@ import Routes from './components/utility/Routes';
 import Nav from './components/utility/Navbar';
 
 import 'bootstrap-css-only';
+import 'font-awesome/css/font-awesome.css';
 import './scss/style.scss';
+
 
 class App extends React.Component {
 
