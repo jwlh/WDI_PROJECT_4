@@ -110,7 +110,7 @@ class WishlistsEdit extends React.Component {
   deleteItem(item) {
     const newItems = Object.assign([], this.state.wishlist.items.filter(product => product !== item));
     const newWishlist = Object.assign({}, this.state.wishlist, {items: newItems});
-  
+
     this.setState({wishlist: newWishlist}, ()=> {
       Axios
         .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
@@ -165,7 +165,7 @@ class WishlistsEdit extends React.Component {
 
         <Col sm={4}>
           {this.state.wishlist.contributors && <div>
-            <h4 className={css.titleFont}>List of Contributors:</h4>
+            <h4 className={css.titleFont}>List of Gifters:</h4>
             <ListGroup fill="true">
               {this.state.wishlist.contributors.map((contributor, i) =>
                 <Link key={i} to={`/users/${contributor.id}`}>

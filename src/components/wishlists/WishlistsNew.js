@@ -110,7 +110,7 @@ class WishlistsNew extends React.Component {
 
           <Col sm={4}>
             <div>
-              {this.state.wishlist.contributors[0] && <h4 className={css.titleFont}>List of Contributors:</h4> }
+              {this.state.wishlist.contributors[0] && <h4 className={css.titleFont}>List of Gifters:</h4> }
               <ListGroup fill="true">
                 {this.state.wishlist.contributors[0] && this.state.wishlist.contributors.map((contributor, i) =>
                   <ListGroupItem key={i} >{contributor.email}</ListGroupItem>

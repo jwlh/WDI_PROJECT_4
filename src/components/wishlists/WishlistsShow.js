@@ -63,7 +63,7 @@ class WishlistsShow extends React.Component {
 
         <Col sm={4}>
           <div>
-            <h3 className={css.titleFont}>Contributors</h3>
+            <h3 className={css.titleFont}>Gifters</h3>
             <ListGroup fill="true">
               {this.state.wishlist.contributors.map(contributor =>
                 <Link key={contributor.id} to={`/users/${contributor.id}`}>
