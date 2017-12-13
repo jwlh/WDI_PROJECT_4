@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
 import Routes from './components/utility/Routes';
 import Nav from './components/utility/Navbar';
+import Logo from './components/utility/Logo';
 
 import 'bootstrap-css-only';
 import 'font-awesome/css/font-awesome.css';
@@ -19,6 +20,7 @@ class App extends React.Component {
             <Nav />
           </header>
           <main className="container">
+            <Logo />
             <Routes />
           </main>
         </div>

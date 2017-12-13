@@ -22,7 +22,7 @@ class WishlistsIndex extends React.Component {
       <Grid>
         <Row>
           {this.state.wishlists.map(wishlist =>
-            <Col xs={6} md={4} key={wishlist.id}>
+            <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
               <Thumbnail>
                 <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>

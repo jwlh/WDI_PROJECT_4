@@ -37,7 +37,7 @@ class UsersShow extends React.Component {
           <Row>
             <h3 className={css.title}>My Wishlists</h3>
             {this.state.user.myWishlists.map(wishlist =>
-              <Col xs={6} md={4} key={wishlist.id}>
+              <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
                 <Thumbnail>
                   <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
@@ -53,7 +53,7 @@ class UsersShow extends React.Component {
           <Row>
             <h3 className={css.title}>My Friend&apos;s Wishlists</h3>
             {this.state.user.subscribedWishlists.map(wishlist =>
-              <Col xs={6} md={4} key={wishlist.id}>
+              <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
                 <Thumbnail>
                   <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
@@ -77,7 +77,7 @@ class UsersShow extends React.Component {
           <Row>
             <h3 className={css.title}>{this.state.user.firstName}&apos;s Wishlists</h3>
             {this.state.user.myWishlists.map(wishlist =>
-              <Col xs={6} md={4} key={wishlist.id}>
+              <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
                 <Thumbnail>
                   <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
@@ -93,7 +93,7 @@ class UsersShow extends React.Component {
           <Row>
             <h3 className={css.title}>{this.state.user.firstName}&apos;s Friend&apos;s Wishlists</h3>
             {this.state.user.subscribedWishlists.map(wishlist =>
-              <Col xs={6} md={4} key={wishlist.id}>
+              <Col xs={12} sm={6} md={4} key={wishlist.id}>
 
                 <Thumbnail>
                   <Image className={css.image} responsive src='../../assets/images/wishlist-image.jpg'/>
