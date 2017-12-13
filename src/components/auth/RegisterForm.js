@@ -7,6 +7,9 @@ import css from '../../scss/components/register-form.scss';
 
 
 const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
+
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
+  console.log('errors are',errors);
   return (
 
     <Form horizontal onSubmit={handleSubmit}>
@@ -101,7 +104,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
 
       <FormGroup>
         <Col smOffset={3} sm={8}>
-          <Button type="submit" className={css.submitButton} bsStyle="success">
+          <Button disabled={formInvalid} type="submit" className={css.submitButton} bsStyle="success">
             Register
           </Button>
         </Col>

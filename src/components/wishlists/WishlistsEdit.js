@@ -107,6 +107,21 @@ class WishlistsEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  deleteItem(item) {
+    const newItems = Object.assign([], this.state.wishlist.items.filter(product => product !== item));
+    const newWishlist = Object.assign({}, this.state.wishlist, {items: newItems});
+  
+    this.setState({wishlist: newWishlist}, ()=> {
+      Axios
+        .put(`/api/wishlists/${this.props.match.params.id}`, this.state.wishlist, {
+          headers: { Authorization: `Bearer ${Auth.getToken()}` }
+        })
+        .catch(err => this.setState({ errors: err.response.data.errors }));
+    });
+
+
+  }
+
   deleteList = () => {
     Axios
       .delete(`/api/wishlists/${this.props.match.params.id}`, {headers: { Authorization: `Bearer ${Auth.getToken()}`}
@@ -124,6 +139,7 @@ class WishlistsEdit extends React.Component {
           handleChangeOnAddContributor={this.handleChangeOnAddContributor}
           handleSubmitOnAddContributor={this.handleSubmitOnAddContributor}
           handleChangeOnName={this.handleChangeOnName}
+
           state={this.state}
           errors={this.state.errors}
           deleteList={this.deleteList}
@@ -139,7 +155,7 @@ class WishlistsEdit extends React.Component {
                 <ListGroupItem key={i} header={item.product}>
                   <Button bsStyle="info" className={css.button} href={item.url}>Link to buy</Button>
                   {!item.bought && <Button className={css.button} bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
-                  {!item.bought && <Button bsStyle="danger" className={css.button}>Delete this item from your list</Button>}
+                  {!item.bought && <Button bsStyle="danger" className={css.button} onClick={() => this.deleteItem(item)}>Delete this item from your list</Button>}
                   {item.bought && <Button bsStyle="danger" disabled className={css.button}>This item has already been bought</Button>}
                 </ListGroupItem>
               )}

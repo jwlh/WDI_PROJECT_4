@@ -4,8 +4,9 @@ import { Form, FormGroup, Col, FormControl, ControlLabel, Button, Row} from 'rea
 
 import css from '../../scss/components/wishlist-form.scss';
 
-function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, handleChangeOnName, state, deleteList}) {
+function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handleChangeOnAddContributor, handleSubmitOnAddItem, handleChangeOnAddItem, handleChangeOnName, state, deleteList, errors}) {
 
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
 
@@ -27,6 +28,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
                 value={state.wishlist.wishlistName}
                 onChange={handleChangeOnName}
               />
+              {errors.wishlistName && <small>{errors.wishlistName}</small>}
             </Col>
             <Col sm={4}>
             </Col>
@@ -111,7 +113,7 @@ function WishlistsForm({handleSubmitOnForm, handleSubmitOnAddContributor, handle
         <FormGroup>
           <Row>
             <Col smOffset={2} sm={6}>
-              <Button type="submit" className={css.submitButton} bsStyle="success">
+              <Button disabled={formInvalid} type="submit" className={css.submitButton} bsStyle="success">
                 Submit your list
               </Button>
               <Button bsStyle="danger" className={css.deleteButton} onClick={deleteList}>

@@ -30,7 +30,8 @@ class WishlistsNew extends React.Component {
 
   handleChangeOnName = ({ target: { value } }) => {
     const newWishlist = Object.assign({}, this.state.wishlist, { wishlistName: value });
-    this.setState({ wishlist: newWishlist });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ wishlist: newWishlist, errors });
   }
 
   handleChangeOnAddItem = ({ target: { name, value } }) => {
@@ -70,7 +71,10 @@ class WishlistsNew extends React.Component {
       .post('/api/wishlists', this.state.wishlist, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      .then((res) => this.props.history.push(`/wishlists/${res.data.id}`))
+      .then((res) => {
+        console.log(res);
+        this.props.history.push(`/wishlists/${res.data.id}`);
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
