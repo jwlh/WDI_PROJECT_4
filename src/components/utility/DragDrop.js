@@ -31,7 +31,7 @@ const DragDrop = ({onChange, value}) => {
         onDragOver={e => e.preventDefault()}
         onDrop={handleImage}
         onClick={() => fileInput.click()}
-      ></div>
+      ><i className={`fa fa-upload ${css.upload}` } aria-hidden="true"></i></div>
     </div>
 
   );
