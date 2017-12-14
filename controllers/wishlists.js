@@ -105,7 +105,7 @@ function wishlistsUpdate(req, res, next) {
               // .then(newUsers => send emails to users...)
               .then(newUsers => {
 
-                const promises = newUsers.map((user) => emailer.sendMail(user));
+                const promises = newUsers.map((user) => emailer.sendMail(user, req.body.createdBy));
                 return Promise.all(promises)
                   .then(() => newUsers);
               })
