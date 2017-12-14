@@ -26,7 +26,7 @@ class OAuthButton extends React.Component {
       .then(res => Auth.setToken(res.data.token))
       .then(() => localStorage.removeItem('provider'))
       .then(() => this.props.history.replace(this.props.location.pathname))
-      .then(() => this.props.history.push('/'));
+      .then(() => this.props.history.push(`/users/${Auth.getPayload().userId}`));
   }
 
   setProvider = () => {

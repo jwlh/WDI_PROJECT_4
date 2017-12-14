@@ -100,7 +100,7 @@ function wishlistsUpdate(req, res, next) {
             const arrayOfNewEmails = _.difference(emails, arrayOfExistingUserEmails);
 
             // create users with email addresses that aren't in the array
-            const usersToCreate = arrayOfNewEmails.map(email => User.create({ email, firstName: 'Awaiting Registration', password: 'password' }));
+            const usersToCreate = arrayOfNewEmails.map(email => User.create({ email, firstName: 'Awaiting Registration', password: 'password', locked: true }));
             return Promise.all(usersToCreate)
               // .then(newUsers => send emails to users...)
               .then(newUsers => {

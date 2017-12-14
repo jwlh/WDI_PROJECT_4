@@ -31,11 +31,6 @@ class UsersShow extends React.Component {
         {this.state.user.id === Auth.getPayload().userId && this.state.user.email &&
           <div>
             <Row >
-              <Col sm={3}>
-                <div className={css.userpicContainer}>
-                  <img className={css.userpic} src={this.state.user.image}></img>
-                </div>
-              </Col>
               <Col sm={6}>
                 <div className={css.userInfo}>
                   <h3>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
