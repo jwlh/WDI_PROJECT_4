@@ -28,20 +28,18 @@ class UsersShow extends React.Component {
   render() {
     return(
       <div>
+
+
+        <Row >
+          <Col sm={6}>
+            <div className={css.userInfo}>
+              <h1 className={css.textColor}>{this.state.user.firstName} {this.state.user.lastName}</h1>
+              <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>
+            </div>
+          </Col>
+        </Row>
         {this.state.user.id === Auth.getPayload().userId && this.state.user.email &&
           <div>
-            <Row >
-              <Col sm={6}>
-                <div className={css.userInfo}>
-                  <h3 className={css.textColor}>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
-                  <h3 className={css.textColor}>Username: {this.state.user.username}</h3>
-                  <h3 className={css.textColor}>Email: {this.state.user.email}</h3>
-
-                  <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>
-                </div>
-              </Col>
-            </Row>
-
             <Row>
               <h3 className={css.sectionTitle}>My Wishlists</h3>
               {this.state.user.myWishlists.map(wishlist =>
@@ -53,8 +51,6 @@ class UsersShow extends React.Component {
                       <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
                     </div>
                   </Link>
-
-
                 </Col>
               )}
             </Row>
@@ -79,15 +75,6 @@ class UsersShow extends React.Component {
 
         {this.state.user.id !== Auth.getPayload().userId && this.state.user.email &&
           <div>
-            <Row >
-              <Col sm={6}>
-                <div className={css.userInfo}>
-                  <h3 className={css.textColor}>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
-                  <h3 className={css.textColor}>Username: {this.state.user.username}</h3>
-                </div>
-              </Col>
-            </Row>
-
             <Row>
               <h3 className={css.sectionTitle}>{this.state.user.firstName}&apos;s Wishlists</h3>
               {this.state.user.myWishlists.map(wishlist =>

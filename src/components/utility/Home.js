@@ -23,8 +23,8 @@ const Home = () => {
       <Row>
         <Col xs={12}>
           <div>
-            {!Auth.isAuthenticated() && <div><Link to="/login"><Button bsStyle="success" className={css.button}><i className="fa fa-sign-in" aria-hidden="true"></i> Log In</Button></Link> <strong>OR</strong></div>}
-            {!Auth.isAuthenticated() && <Link to="/register"><Button bsStyle="info" className={css.button}><i className="fa fa-user-plus" aria-hidden="true"></i> Register</Button></Link>}
+            {!Auth.isAuthenticated() && <div><Link to="/login"><Button bsStyle="success" className={css.button}><i className="fa fa-sign-in" aria-hidden="true"></i> Log In</Button></Link> <strong className={css.textColor}>OR</strong> <Link to="/register"><Button bsStyle="info" className={css.button}> <i className="fa fa-user-plus" aria-hidden="true"> </i> Register</Button></Link></div>}
+
             {Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="standard-button"><Button bsStyle="info" className={css.button}><i className="fa fa-user" aria-hidden="true"></i> View Your Profile</Button></Link>}
           </div>
         </Col>
