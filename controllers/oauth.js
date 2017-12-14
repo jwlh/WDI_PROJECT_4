@@ -19,7 +19,7 @@ function facebook(req, res, next) {
     .then(token => {
       return rp({
         method: 'GET',
-        url: 'https://graph.facebook.com/v2.5/me?fields=id,email,name,picture',
+        url: 'https://graph.facebook.com/v2.5/me?fields=id,email,name,picture.height(961)',
         qs: token,
         json: true
       });
@@ -37,7 +37,7 @@ function facebook(req, res, next) {
               email: profile.email
             });
           }
-          
+
           user.facbookId = profile.id;
           user.image = profile.picture.data.url;
           return user.save();

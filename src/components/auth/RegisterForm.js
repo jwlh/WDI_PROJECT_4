@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
 import OAuthButton from './OAuthButton';
+import DragDrop from '../utility/DragDrop';
 
 import css from '../../scss/components/register-form.scss';
 
@@ -68,7 +69,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
             onChange={handleChange}
             value={user.email}
           />
-          {errors.email && <small>{errors.email}</small>}
+          {/* {errors.email && <small>{errors.email}</small>} */}
         </Col>
       </FormGroup>
 
@@ -84,7 +85,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
             onChange={handleChange}
             value={user.password}
           />
-          {errors.password && <small>{errors.password}</small>}
+          {/* {errors.password && <small>{errors.password}</small>} */}
         </Col>
       </FormGroup>
       <FormGroup controlId="formHorizontalConfirmPassword">
@@ -98,6 +99,18 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
             placeholder="Confirm Password"
             onChange={handleChange}
             value={user.passwordConfirmation}
+          />
+        </Col>
+      </FormGroup>
+
+      <FormGroup>
+        <Col componentClass={ControlLabel} sm={3}>
+          <label htmlFor="image">Image</label>
+        </Col>
+        <Col sm={8}>
+          <DragDrop
+            onChange={handleChange}
+            value={user.base64 || user.imageSRC}
           />
         </Col>
       </FormGroup>

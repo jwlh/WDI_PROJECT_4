@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import DragDrop from '../utility/DragDrop';
 
 import css from '../../scss/components/users-form.scss';
 
@@ -89,6 +90,18 @@ const UsersForm = ({ handleChange, handleSubmit, user}) => {
             name="passwordConfirmation"
             placeholder="Confirm Password"
             onChange={handleChange}
+          />
+        </Col>
+      </FormGroup>
+
+      <FormGroup>
+        <Col componentClass={ControlLabel} sm={3}>
+          <label htmlFor="image">Image</label>
+        </Col>
+        <Col sm={8}>
+          <DragDrop
+            onChange={handleChange}
+            value={user.base64 || user.imageSRC}
           />
         </Col>
       </FormGroup>

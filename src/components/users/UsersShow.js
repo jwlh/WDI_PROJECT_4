@@ -41,7 +41,7 @@ class UsersShow extends React.Component {
 
                 <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
                   <div className={css.container}>
-                    <img className={css.picture} src='../../assets/images/wishlist-image.jpg'></img>
+                    <img className={css.picture} src={wishlist.createdBy.image}></img>
                     <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
                   </div>
                 </Link>
@@ -57,7 +57,7 @@ class UsersShow extends React.Component {
 
                 <Link className={css.link}to={`/wishlists/${wishlist.id}`}>
                   <div className={css.container}>
-                    <img className={css.picture} src='../../assets/images/wishlist-image.jpg'></img>
+                    <img className={css.picture} src={wishlist.createdBy.image}></img>
                     <h2 className={css.title} id="wishlist-index-title">{wishlist.createdBy.firstName} {wishlist.createdBy.lastName}&apos;s <br/> {wishlist.wishlistName}</h2>
                   </div>
                 </Link>

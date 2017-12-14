@@ -4,6 +4,7 @@ const oauth  = require('../controllers/oauth');
 const wishlists  = require('../controllers/wishlists');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
+const imageUpload = require('../lib/imageUpload');
 
 
 router.route('/wishlists')
@@ -21,11 +22,11 @@ router.route('/users')
 router
   .route('/users/:id')
   .get(users.show)
-  .put(secureRoute, users.edit)
+  .put(secureRoute, imageUpload, users.edit)
   .delete(secureRoute, users.delete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);

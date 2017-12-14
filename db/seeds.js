@@ -19,6 +19,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/11817083_10155878415075282_2070702603919375436_n.jpg?oh=54b1f2a95d1d2ab55dec2a92cd8c1dfc&oe=5ACF45D2',
     locked: false
   }, {
     firstName: 'Louise',
@@ -28,6 +29,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/16715975_10158191457370282_3573791394407820640_o.jpg?oh=d55ed819d44c8ac0f1da069e01fb857e&oe=5AC57BFF',
     locked: false
   }, {
     firstName: 'Ralph',
@@ -37,6 +39,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: '../src/assets/images/IMG_0490.jpg',
     locked: false
   }, {
     firstName: 'Michael',
@@ -46,6 +49,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: '../src/assets/images/Michael_Hall.jpg',
     locked: false
   }, {
     firstName: 'Susanne',
@@ -55,6 +59,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: '../src/assets/images/susanne_hall.jpg',
     locked: false
   }, {
     firstName: 'Moyra',
@@ -64,6 +69,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t31.0-8/12716081_10154620774512846_5809085649552500770_o.jpg?oh=aeedcc91b9d28364a53b56e8356185f8&oe=5AC2E59F',
     locked: false
   }, {
     firstName: 'Paul',
@@ -73,6 +79,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/1234633_687641012601_145710681_n.jpg?oh=258d95d7f8e3677cf9ab09f2a42b8337&oe=5AC26806',
     locked: false
   }, {
     firstName: 'Peter',
@@ -82,6 +89,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/11953008_10101774508233685_922639988965450540_n.jpg?oh=656b0ebea30c9b7f6eda23c2ecf89897&oe=5AC53BCE',
     locked: false
   }, {
     firstName: 'Peta',
@@ -91,6 +99,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/11231850_10101774504416335_3333464995591415577_n.jpg?oh=d205819dea8d4810c78afa18cefb30e8&oe=5ACFD65E',
     locked: false
   }, {
     firstName: 'Celine',
@@ -100,6 +109,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
+    image: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/23843204_936603509761_8687920602165779328_n.jpg?oh=fb33aebd6955231fd20eba513789e5ab&oe=5AB8B82B',
     locked: false
   }])
   .then((users) => {
