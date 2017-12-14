@@ -1,5 +1,5 @@
 .title {
-  color: white;
+  color: #f8f8f8;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   margin-left: 5px;
@@ -17,6 +17,11 @@
    z-index: -1;
 }
 
+.textColor {
+  color: #f8f8f8;
+  text-shadow: 2px 2px 5px #000000;
+}
+
 .container {
   position:relative;
   padding-top:33%;
@@ -27,7 +32,7 @@
 
 a :hover {
   text-decoration: underline;
-  text-decoration-color: white;
+  text-decoration-color: #f8f8f8;
 }
 
 .logo{
@@ -43,6 +48,8 @@ a :hover {
   font-family: 'Poppins', sans-serif;
   text-decoration: underline;
   margin-left: 15px;
+  color: #f8f8f8;
+  text-shadow: 2px 2px 5px #000000;
 }
 
 

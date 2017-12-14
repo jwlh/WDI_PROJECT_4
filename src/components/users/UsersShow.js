@@ -33,9 +33,9 @@ class UsersShow extends React.Component {
             <Row >
               <Col sm={6}>
                 <div className={css.userInfo}>
-                  <h3>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
-                  <h3>Username: {this.state.user.username}</h3>
-                  <h3>Email: {this.state.user.email}</h3>
+                  <h3 className={css.textColor}>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
+                  <h3 className={css.textColor}>Username: {this.state.user.username}</h3>
+                  <h3 className={css.textColor}>Email: {this.state.user.email}</h3>
 
                   <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>
                 </div>
@@ -80,15 +80,10 @@ class UsersShow extends React.Component {
         {this.state.user.id !== Auth.getPayload().userId && this.state.user.email &&
           <div>
             <Row >
-              <Col sm={3}>
-                <div className={css.userpicContainer}>
-                  <img className={css.userpic} src={this.state.user.image}></img>
-                </div>
-              </Col>
               <Col sm={6}>
                 <div className={css.userInfo}>
-                  <h3>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
-                  <h3>Username: {this.state.user.username}</h3>
+                  <h3 className={css.textColor}>Name: {this.state.user.firstName} {this.state.user.lastName}</h3>
+                  <h3 className={css.textColor}>Username: {this.state.user.username}</h3>
                 </div>
               </Col>
             </Row>

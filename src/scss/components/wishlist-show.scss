@@ -12,12 +12,30 @@
 .titleFont {
   font-family: 'Poppins', sans-serif;
   text-decoration: underline;
+  color: #f8f8f8;
+  text-shadow: 2px 2px 5px #000000;
+}
+
+.list-group-item {
+  background-color: #f8f8f8;
+  opacity: 0.5;
+}
+
+li {
+  opacity: 0.9;
+}
+
+span {
+  opacity: 0.9;
 }
 
 .listName {
   font-family: 'Poppins', sans-serif;
   text-decoration: underline;
   text-align:center;
+  color: #f8f8f8;
+  text-shadow: 2px 2px 5px #000000;
+
 }
 
 .editButton {

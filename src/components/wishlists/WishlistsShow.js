@@ -51,7 +51,7 @@ class WishlistsShow extends React.Component {
           <h3 className={css.titleFont}>Items</h3>
           <ListGroup>
             {this.state.wishlist.items.map((item, i) =>
-              <ListGroupItem key={i} header={item.product}>
+              <ListGroupItem className={css.listBackground} key={i} header={item.product}>
                 {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button className={css.button} bsStyle="info" href={item.url} target="_blank">Link to buy</Button>}
                 {userIsContributor && !item.bought && <Button className={css.button} bsStyle="info" href={item.url} target="_blank">Link to buy</Button>}
                 {userIsContributor && !item.bought && <Button className={css.button} bsStyle="success" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}

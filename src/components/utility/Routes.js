@@ -6,7 +6,7 @@ import ProtectedRoute from './ProtectedRoute';
 
 import Login from '../auth/Login';
 import Register from '../auth/Register';
-import WishlistsIndex from '../wishlists/WishlistsIndex';
+import Home from '../utility/Home';
 import WishlistsShow from '../wishlists/WishlistsShow';
 import WishlistsNew from '../wishlists/WishlistsNew';
 import WishlistsEdit from '../wishlists/WishlistsEdit';
@@ -18,7 +18,7 @@ import UsersEdit from '../users/UsersEdit';
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={WishlistsIndex} />
+      <Route exact path="/" component={Home} />
       <ProtectedRoute exact path="/wishlists/new" component={WishlistsNew} />
       <ProtectedRoute exact path="/wishlists/:id/edit" component={WishlistsEdit} />
       <ProtectedRoute exact path="/wishlists/:id" component={WishlistsShow} />
