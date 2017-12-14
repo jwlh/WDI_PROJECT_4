@@ -39,7 +39,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
-    image: '../src/assets/images/IMG_0490.jpg',
+    image: 'https://i.imgur.com/AIpE2sE.jpg',
     locked: false
   }, {
     firstName: 'Michael',
@@ -49,7 +49,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
-    image: '../src/assets/images/Michael_Hall.jpg',
+    image: 'https://i.imgur.com/eqEVV4s.jpg',
     locked: false
   }, {
     firstName: 'Susanne',
@@ -59,7 +59,7 @@ User
     password: 'password',
     passwordConfirmation: 'password',
     subscribedWishlists: [],
-    image: '../src/assets/images/susanne_hall.jpg',
+    image: 'https://i.imgur.com/o7kRl6i.jpg',
     locked: false
   }, {
     firstName: 'Moyra',
