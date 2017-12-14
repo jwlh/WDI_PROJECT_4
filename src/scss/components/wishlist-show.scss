@@ -1,6 +1,7 @@
 .button {
   margin-right: 5px;
   min-width: 200px;
+  margin-bottom: 5px;
 }
 
 .centered {
@@ -27,4 +28,21 @@
 
 .logo{
   height: 100px;
+}
+
+.contributorImage {
+  position: absolute;
+   top: 0;
+   right: -10px;
+   height:110%;
+}
+
+.contributorImageContainer {
+  position:relative;
+  padding-top:33%;
+  overflow: hidden;
+  margin: 15px 1px;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
 }

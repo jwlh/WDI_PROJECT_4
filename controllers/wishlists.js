@@ -53,7 +53,6 @@ function wishlistsCreate(req, res, next) {
           .then(allUsers => {
 
             req.body.contributors = allUsers;
-
             return Wishlist.create(req.body);
           });
       }

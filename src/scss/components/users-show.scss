@@ -45,7 +45,27 @@ a :hover {
   margin-left: 15px;
 }
 
+.userInfo {
+  margin-left: 10px;
+}
+
 .editButton {
+  position: relative;
   margin-left: 0;
   min-width: 200px;
+}
+
+.userpic{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+}
+
+.userpicContainer{
+  position:relative;
+  overflow:hidden;
+  height: 200px;
+  width: auto;
+  
 }

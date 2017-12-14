@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 
-import { ListGroup, ListGroupItem, Button, Col} from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Col, Media} from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
 
@@ -155,8 +155,8 @@ class WishlistsEdit extends React.Component {
                 <ListGroupItem key={i} header={item.product}>
                   <Button bsStyle="info" className={css.button} href={item.url}>Link to buy</Button>
                   {!item.bought && <Button className={css.button} bsStyle="info" onClick={() => this.setBought(item)}>Mark this as bought</Button>}
-                  {!item.bought && <Button bsStyle="danger" className={css.button} onClick={() => this.deleteItem(item)}>Delete this item from your list</Button>}
-                  {item.bought && <Button bsStyle="danger" disabled className={css.button}>This item has already been bought</Button>}
+                  {!item.bought && <Button bsStyle="danger" className={css.button} onClick={() => this.deleteItem(item)}>Delete this item</Button>}
+                  {item.bought && <Button bsStyle="danger" disabled className={css.button}>This item has been bought</Button>}
                 </ListGroupItem>
               )}
             </ListGroup>
@@ -169,7 +169,18 @@ class WishlistsEdit extends React.Component {
             <ListGroup fill="true">
               {this.state.wishlist.contributors.map((contributor, i) =>
                 <Link key={i} to={`/users/${contributor.id}`}>
-                  <ListGroupItem>{contributor.firstName} {contributor.lastName}</ListGroupItem>
+                  <ListGroupItem>
+                    <Media>
+                      <Media.Left align="middle">
+                        <div className={css.contributorImageContainer}>
+                          <img className={css.contributorImage} src={contributor.image} alt="placeholder thumbnail" />
+                        </div>
+                      </Media.Left>
+                      <Media.Body align="middle">
+                        {contributor.firstName} {contributor.lastName}
+                      </Media.Body>
+                    </Media>
+                  </ListGroupItem>
                 </Link>
               )}
             </ListGroup>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { ListGroup, ListGroupItem, Button, Col } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Col, Media } from 'react-bootstrap';
 import Auth from '../../lib/Auth';
 import { Link } from 'react-router-dom';
 
@@ -52,8 +52,8 @@ class WishlistsShow extends React.Component {
           <ListGroup>
             {this.state.wishlist.items.map((item, i) =>
               <ListGroupItem key={i} header={item.product}>
-                {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button className={css.button} bsStyle="info" href={item.url}>Link to buy</Button>}
-                {userIsContributor && !item.bought && <Button className={css.button} bsStyle="info" href={item.url}>Link to buy</Button>}
+                {this.state.wishlist.createdBy.id === Auth.getPayload().userId && <Button className={css.button} bsStyle="info" href={item.url} target="_blank">Link to buy</Button>}
+                {userIsContributor && !item.bought && <Button className={css.button} bsStyle="info" href={item.url} target="_blank">Link to buy</Button>}
                 {userIsContributor && !item.bought && <Button className={css.button} bsStyle="success" onClick={() => this.buyItem(item)}>Mark this as bought</Button>}
                 {userIsContributor && item.bought && <Button className={css.button} bsStyle="danger" disabled>This has been bought</Button>}
               </ListGroupItem>
@@ -67,7 +67,18 @@ class WishlistsShow extends React.Component {
             <ListGroup fill="true">
               {this.state.wishlist.contributors.map(contributor =>
                 <Link key={contributor.id} to={`/users/${contributor.id}`}>
-                  <ListGroupItem >{contributor.firstName}</ListGroupItem>
+                  <ListGroupItem >
+                    <Media>
+                      <Media.Left align="middle">
+                        <div className={css.contributorImageContainer}>
+                          <img className={css.contributorImage} src={contributor.image} alt="placeholder thumbnail" />
+                        </div>
+                      </Media.Left>
+                      <Media.Body align="middle">
+                        {contributor.firstName} {contributor.lastName}
+                      </Media.Body>
+                    </Media>
+                  </ListGroupItem>
                 </Link>
               )}
             </ListGroup>
