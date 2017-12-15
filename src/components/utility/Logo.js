@@ -11,7 +11,7 @@ const myLogo = () => {
   return(
     <Row>
       <Col xs={12}>
-        <Link exact to='/'>
+        <Link to='/'>
           <LogoSvg />
         </Link>
       </Col>
