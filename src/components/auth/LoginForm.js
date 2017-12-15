@@ -12,7 +12,7 @@ const LoginForm = ({ handleChange, handleSubmit}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Email
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="text"
             name="email"
@@ -26,7 +26,7 @@ const LoginForm = ({ handleChange, handleSubmit}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Password
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="password"
             name="password"
@@ -37,12 +37,12 @@ const LoginForm = ({ handleChange, handleSubmit}) => {
       </FormGroup>
 
       <FormGroup>
-        <Col smOffset={3} sm={8}>
+        <Col smOffset={3} sm={6}>
           <Button type="submit" className={css.submitButton} bsStyle="success">
             Log In
           </Button>
         </Col>
-        <Col smOffset={3} sm={8}>
+        <Col smOffset={3} sm={6}>
           <OAuthButton provider="facebook"><i className="fa fa-facebook-official" aria-hidden="true"></i> Login with Facebook</OAuthButton>
         </Col>
       </FormGroup>

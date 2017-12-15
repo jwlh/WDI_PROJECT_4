@@ -18,7 +18,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           First Name
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="text"
             name="firstName"
@@ -32,7 +32,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Last Name
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="text"
             name="lastName"
@@ -46,7 +46,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Username
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="text"
             name="username"
@@ -61,7 +61,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Email
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="text"
             name="email"
@@ -77,7 +77,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Password
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="password"
             name="password"
@@ -92,7 +92,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           Confirm Password
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <FormControl
             type="password"
             name="passwordConfirmation"
@@ -107,7 +107,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
         <Col componentClass={ControlLabel} sm={3}>
           <label htmlFor="image">Image</label>
         </Col>
-        <Col sm={8}>
+        <Col sm={6}>
           <DragDrop
             onChange={handleChange}
             value={user.base64 || user.imageSRC}
@@ -116,12 +116,12 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors}) => {
       </FormGroup>
 
       <FormGroup>
-        <Col smOffset={3} sm={8}>
+        <Col smOffset={3} sm={6}>
           <Button disabled={formInvalid} type="submit" className={css.submitButton} bsStyle="success">
             Register
           </Button>
         </Col>
-        <Col smOffset={3} sm={8}>
+        <Col smOffset={3} sm={6}>
           <OAuthButton provider="facebook"><i className="fa fa-facebook-official" aria-hidden="true"></i> Register with Facebook</OAuthButton>
         </Col>
       </FormGroup>
