@@ -78,6 +78,30 @@ class WishlistsNew extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+
+  clearList = (e) => {
+    e.preventDefault();
+    const emptyState = {
+      wishlist: {
+        wishlistName: '',
+        items: [],
+        createdBy: {},
+        contributors: []
+      },
+      newItem: {
+        product: '',
+        url: '',
+        bought: false
+      },
+      newContributor: {
+        email: ''
+      },
+      errors: {}
+    };
+    this.setState(emptyState);
+
+  }
+
   render() {
     return (
       <div>
@@ -91,6 +115,7 @@ class WishlistsNew extends React.Component {
           wishlist={this.state.wishlist}
           state={this.state}
           errors={this.state.errors}
+          deleteList={this.clearList}
         />
         <div>
           {this.state.wishlist.wishlistName && <Col><h3 className={css.listName}>{this.state.wishlist.wishlistName}</h3></Col>}
