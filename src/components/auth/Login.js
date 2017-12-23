@@ -21,6 +21,7 @@ class Login extends React.Component {
     e.preventDefault();
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
+        console.log('res.data after post', res.data);
         Auth.setToken(res.data.token);
         if (res.data.locked) {
           return this.props.history.push(`/users/${res.data.user.id}/edit`);
