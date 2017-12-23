@@ -22,11 +22,10 @@ class Login extends React.Component {
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
         Auth.setToken(res.data.token);
-        console.log(res.data);
         if (res.data.locked) {
-          return this.props.history.push(`/users/${res.data.id}/edit`);
+          return this.props.history.push(`/users/${res.data.user.id}/edit`);
         }
-        return this.props.history.push(`/users/${res.data.id}`);
+        return this.props.history.push(`/users/${res.data.user.id}`);
       })
       .catch(() => {
         Auth.logout();

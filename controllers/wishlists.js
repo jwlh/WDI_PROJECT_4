@@ -57,7 +57,10 @@ function wishlistsCreate(req, res, next) {
           });
       }
     })
-    .then(wishlist => res.status(201).json(wishlist))
+    .then(wishlist => {
+      console.log(wishlist);
+      res.status(201).json(wishlist);
+    })
     .catch(next);
 }
 
