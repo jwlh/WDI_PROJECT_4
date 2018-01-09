@@ -1,5 +1,6 @@
-# WDI Project 4: MERN Stack
+![](https://www.coindesk.com/wp-content/themes/coindesk2/images/events/consensus-2015/sponsors-and-partners/general-assembly.png)
 
+# WDI 30, PROJECT 4 - IWISH
 ## Deployment
 
 When deploying the app for the first time ensure you have run the following steps in order:
