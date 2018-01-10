@@ -139,5 +139,5 @@ I chose Facebook as the obvious OAuth option for this kind of app and for people
 
 Features I would like to add in the future would be:
 
-* Use the Facebook OAuth to connect with a users Facebook friends and enable them to invite them.
+* Use the Facebook OAuth to connect with a users Facebook friends and enable them to invite them directly.
 * Integrate a shopping API to find a users gifts at the best price possible 
