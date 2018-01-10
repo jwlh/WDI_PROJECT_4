@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /**
  * New Relic agent configuration.
  *
@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['iWish'],
+  app_name: ['iWishApp'],
   /**
    * Your New Relic license key.
    */
@@ -22,4 +22,4 @@ exports.config = {
      */
     level: 'info'
   }
-}
+};
