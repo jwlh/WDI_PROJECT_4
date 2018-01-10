@@ -34,7 +34,7 @@ class UsersShow extends React.Component {
           <Col sm={6}>
             <div className={css.userInfo}>
               <h1 className={css.textColor}>{this.state.user.firstName} {this.state.user.lastName}</h1>
-              <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>
+              {Auth.getPayload().userID === this.props.match.params.id   && <Link className={`btn btn-warning ${css.editButton}`} to={`/users/${this.props.match.params.id}/edit`}>Edit my Profile</Link>}
             </div>
           </Col>
         </Row>
