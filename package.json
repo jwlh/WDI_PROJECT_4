@@ -12,12 +12,14 @@
     "seed": "node db/seeds",
     "test:client": "node_modules/.bin/_mocha test/client/helper \"test/client/**/*_test.js\"",
     "test:server": "node_modules/.bin/_mocha \"test/api/**/*_test.js\"",
-    "test": "yarn test:server && yarn test:client"
+    "test": "yarn test:server && yarn test:client",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
-    "aws-sdk": "^2.169.0",
-    "axios": "^0.17.1",
-    "bcrypt": "^1.0.3",
+    "aws-sdk": "^2.814.0",
+    "axios": "^0.21.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.1",
     "bootstrap-css-only": "^3.3.7",
     "express": "^4.16.2",
@@ -25,19 +27,20 @@
     "fontawesome": "^4.7.2",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
-    "mongoose": "^4.13.6",
+    "mongoose": "^5.7.3",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
     "newrelic": "^2.5.0",
     "nodemailer": "^4.4.0",
-    "nodemailer-mailgun-transport": "^1.3.6",
+    "nodemailer-mailgun-transport": "^1.4.0",
     "query-string": "^5.0.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.2.1",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -65,5 +68,6 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
-  }
+  },
+  "snyk": true
 }
