@@ -25,7 +25,7 @@
     "fontawesome": "^4.7.2",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
-    "mongoose": "^4.13.6",
+    "mongoose": "^5.3.9",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
     "newrelic": "^2.5.0",
